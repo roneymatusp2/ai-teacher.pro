@@ -20,7 +20,7 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": false,
     "allowUnusedLabels": true,
-    "allowImplicitReturns": true,
+    "noImplicitReturns": false,
     "allowUnreachableCode": true
   },
   "include": ["src"],

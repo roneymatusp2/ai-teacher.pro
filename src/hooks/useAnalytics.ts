@@ -108,7 +108,7 @@ export const usePerformanceMonitoring = () => {
       // CLS (Cumulative Layout Shift)
       new PerformanceObserver((entryList) => {
         for (const entry of entryList.getEntries()) {
-          console.log('📊 CLS:', entry.value);
+          console.log('📊 CLS:', (entry as any).value);
         }
       }).observe({ entryTypes: ['layout-shift'] });
 
@@ -122,7 +122,7 @@ export const usePerformanceMonitoring = () => {
       // FID (First Input Delay)
       new PerformanceObserver((entryList) => {
         for (const entry of entryList.getEntries()) {
-          console.log('📊 FID:', entry.processingStart - entry.startTime);
+          console.log('📊 FID:', (entry as any).processingStart - entry.startTime);
         }
       }).observe({ entryTypes: ['first-input'] });
     }
