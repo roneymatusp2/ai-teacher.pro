@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import AnimatedText from './AnimatedText';
+import { safeDecodeHTMLEntities } from '../utils/htmlEntities';
 
 interface AINewsItem {
   id: string;
@@ -158,7 +159,7 @@ const AINewsSection: React.FC = () => {
               </div>
               
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                {featuredItem.title}
+                {safeDecodeHTMLEntities(featuredItem.title)}
               </h2>
               
               <div 
@@ -222,7 +223,7 @@ const AINewsSection: React.FC = () => {
                 </div>
                 
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                  {item.title}
+                  {safeDecodeHTMLEntities(item.title)}
                 </h3>
                 
                 <div 

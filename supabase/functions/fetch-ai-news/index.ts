@@ -287,16 +287,63 @@ function extractXMLContent(xml: string, tag: string): string {
 }
 
 function cleanText(text: string): string {
-  return text
-    .replace(/<[^>]*>/g, '') // Remove HTML tags
-    .replace(/"/g, '"')
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/&#39;/g, "'")
-    .replace(/"/g, '"')
-    .replace(/\s+/g, ' ')
-    .trim()
+  // First remove HTML tags
+  let cleaned = text.replace(/<[^>]*>/g, '');
+  
+  // Then decode HTML entities
+  const entities: { [key: string]: string } = {
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&quot;': '"',
+    '&#39;': "'",
+    '&#8217;': "'", // Right single quotation mark
+    '&#8220;': '"', // Left double quotation mark
+    '&#8221;': '"', // Right double quotation mark
+    '&#8216;': "'", // Left single quotation mark
+    '&#8211;': '–', // En dash
+    '&#8212;': '—', // Em dash
+    '&#8230;': '…', // Ellipsis
+    '&nbsp;': ' ',  // Non-breaking space
+    '&#160;': ' ',  // Non-breaking space (numeric)
+    '&#38;': '&',   // Ampersand
+    '&#60;': '<',   // Less than
+    '&#62;': '>',   // Greater than
+    '&apos;': "'",  // Apostrophe
+    '&#x27;': "'",  // Apostrophe (hex)
+    '&#x2F;': '/',  // Forward slash
+    '&#47;': '/',   // Forward slash
+    '&mdash;': '—', // Em dash
+    '&ndash;': '–', // En dash
+    '&hellip;': '…', // Ellipsis
+    '&lsquo;': '\u2018', // Left single quote
+    '&rsquo;': '\u2019', // Right single quote
+    '&ldquo;': '\u201C', // Left double quote
+    '&rdquo;': '\u201D', // Right double quote
+    '\u201C': '"', // Curly quotes
+    '\u201D': '"',
+    '\u2018': "'",
+    '\u2019': "'",
+  };
+  
+  // Replace known entities
+  Object.entries(entities).forEach(([entity, char]) => {
+    const regex = new RegExp(entity, 'gi');
+    cleaned = cleaned.replace(regex, char);
+  });
+  
+  // Handle numeric entities (decimal)
+  cleaned = cleaned.replace(/&#(\d+);/g, (match, dec) => {
+    return String.fromCharCode(parseInt(dec, 10));
+  });
+  
+  // Handle numeric entities (hexadecimal)
+  cleaned = cleaned.replace(/&#x([0-9a-fA-F]+);/g, (match, hex) => {
+    return String.fromCharCode(parseInt(hex, 16));
+  });
+  
+  // Clean up extra whitespace
+  return cleaned.replace(/\s+/g, ' ').trim();
 }
 
 function isAIRelatedEnhanced(title: string, description: string): boolean {
