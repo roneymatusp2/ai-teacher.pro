@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, BookOpen, Download, ExternalLink, Users, Video, FileText, Tool } from 'lucide-react';
+import { ArrowLeft, BookOpen, Download, ExternalLink, Users, Video, FileText, Settings } from 'lucide-react';
 import { findResourceByPath } from '../data/bookResources';
 
 const BookResourcePage: React.FC = () => {
@@ -22,7 +22,7 @@ const BookResourcePage: React.FC = () => {
       case 'guide':
         return <FileText className="w-5 h-5" />;
       case 'tool':
-        return <Tool className="w-5 h-5" />;
+        return <Settings className="w-5 h-5" />;
       case 'template':
         return <Download className="w-5 h-5" />;
       case 'video':
