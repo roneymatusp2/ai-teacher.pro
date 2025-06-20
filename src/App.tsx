@@ -9,6 +9,7 @@ import LearnPage from './pages/LearnPage';
 import LibraryPage from './pages/LibraryPage';
 import VideosPage from './pages/VideosPage';
 import AboutPage from './pages/AboutPage';
+import BookResourcePage from './pages/BookResourcePage';
 import AnimatedBackground from './components/AnimatedBackground';
 import ErrorBoundary from './components/ErrorBoundary';
 import PerformanceMonitor from './components/PerformanceMonitor';
@@ -79,6 +80,8 @@ function App() {
                 <Route path="/library" element={<LibraryPage />} />
                 <Route path="/videos" element={<VideosPage />} />
                 <Route path="/about" element={<AboutPage />} />
+                {/* Book exclusive resources - hidden routes */}
+                <Route path="/*" element={<BookResourcePage />} />
               </Routes>
             </motion.div>
           </AnimatePresence>
