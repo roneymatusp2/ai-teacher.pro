@@ -38,8 +38,8 @@ export function decodeHTMLEntitiesSimple(text: string): string {
     '&mdash;': '—', // Em dash
     '&ndash;': '–', // En dash
     '&hellip;': '…', // Ellipsis
-    '&lsquo;': ''', // Left single quote
-    '&rsquo;': ''', // Right single quote
+    '&lsquo;': "'", // Left single quote
+    '&rsquo;': "'", // Right single quote
     '&ldquo;': '"', // Left double quote
     '&rdquo;': '"', // Right double quote
   };
