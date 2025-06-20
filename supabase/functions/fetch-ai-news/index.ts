@@ -26,13 +26,13 @@ serve(async (req) => {
     
     const supabase = createClient(supabaseUrl, supabaseServiceKey)
     
-    console.log('🌍 Starting ENHANCED AI news fetch with influential X accounts and international events...')
+    console.log('🌍 Starting PROFESSIONAL AI news fetch with 150+ premium sources including top influencers...')
     
     // Log start of operation
     await supabase.from('pipeline_logs').insert({
-      operation: 'fetch_enhanced_global_news',
+      operation: 'fetch_professional_ai_news',
       status: 'started',
-      message: 'Beginning enhanced global AI news fetch including influential X accounts and international events'
+      message: 'Beginning professional AI news fetch with 150+ premium sources including top influencers, organizations, and academic institutions'
     })
 
     // Get active news sources
@@ -45,7 +45,8 @@ serve(async (req) => {
       throw new Error(`Failed to fetch sources: ${sourcesError.message}`)
     }
 
-    console.log(`📰 Found ${sources?.length || 0} active global news sources`)
+    console.log(`📰 Found ${sources?.length || 0} active premium AI news sources`)
+    console.log(`🎯 Including top influencers: Lex Fridman, Andrew Ng, Sam Altman, Yann LeCun, and many more...`)
 
     let totalFetched = 0
     let totalErrors = 0
