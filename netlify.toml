@@ -1,0 +1,99 @@
+# Netlify Configuration for AI Teacher Pro
+
+[build]
+  # Directory to change to before starting build
+  base = ""
+  
+  # Build command - using npm run build for Vite
+  command = "npm run build"
+  
+  # Directory that contains the deploy-ready files
+  publish = "dist"
+
+[build.environment]
+  # Environment variables for build
+  NODE_VERSION = "18.17.0"
+  NPM_FLAGS = "--force"
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Cache control for static assets
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    # Longer cache for assets
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirects for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  
+# Redirect for old routes to new language-specific routes
+[[redirects]]
+  from = "/tools"
+  to = "/en/tools"
+  status = 301
+  
+[[redirects]]
+  from = "/learn"
+  to = "/en/learn"
+  status = 301
+  
+[[redirects]]
+  from = "/library"
+  to = "/en/library"
+  status = 301
+  
+[[redirects]]
+  from = "/videos"
+  to = "/en/videos"
+  status = 301
+  
+[[redirects]]
+  from = "/about"
+  to = "/en/about"
+  status = 301
+  
+[[redirects]]
+  from = "/book-resources"
+  to = "/en/book-resources"
+  status = 301
+
+# Edge Functions configuration (if needed)
+[[edge_functions]]
+  path = "/api/*"
+  function = "api"
+
+# Plugins
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  
+  # Plugin configuration
+  [plugins.inputs]
+    # Lighthouse performance audits
+    output_path = "reports/lighthouse.html"
+    
+# Development settings
+[dev]
+  command = "npm run dev"
+  port = 5173
+  targetPort = 5173
+  autoLaunch = true
+  framework = "#custom"
+
+# Functions directory (if using Netlify Functions)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

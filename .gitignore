@@ -1,0 +1,68 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules/
+node_modules
+.pnpm-lock.yaml
+package-lock.json
+
+# Build outputs
+dist/
+dist
+dist-ssr
+build/
+out/
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables - CRITICAL SECURITY
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# API Keys and Secrets - DO NOT COMMIT
+*.key
+*.pem
+config/keys.js
+config/prod.js
+
+# Stripe Keys - NEVER COMMIT
+stripe_*
+*stripe*
+sk_live_*
+pk_live_*
+sk_test_*
+pk_test_*
+
+# Supabase
+.supabase
+
+# Temporary files
+tmp/
+temp/
+
+# Cache
+.cache/
+.vite/
+*.tsbuildinfo

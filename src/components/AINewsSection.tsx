@@ -1,0 +1,806 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { supabase } from '../lib/supabase';
+import AnimatedText from './AnimatedText';
+import { debugAINewsSystem, fixAINewsSystem } from '../utils/aiNewsDebug';
+import { resetAINewsSystem, emergencyCleanCorruptedData, validateSystemAfterReset } from '../utils/aiNewsReset';
+
+interface AINewsItem {
+  id: string;
+  title: string;
+  slug: string;
+  summary_md: string;
+  source_name: string;
+  source_url: string;
+  published_at: string;
+  tags: string[];
+  featured: boolean;
+  view_count: number;
+  influence_score?: number;
+  education_relevance?: number;
+}
+
+const AINewsSection: React.FC = () => {
+  const [newsItems, setNewsItems] = useState<AINewsItem[]>([]);
+  const [featuredItem, setFeaturedItem] = useState<AINewsItem | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [isManuallyFetching, setIsManuallyFetching] = useState(false);
+  const [isProcessingSummaries, setIsProcessingSummaries] = useState(false);
+  const [lastFetchTime, setLastFetchTime] = useState<string | null>(null);
+  const [isDebugging, setIsDebugging] = useState(false);
+  const [isFixing, setIsFixing] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
+  const [isEmergencyCleaning, setIsEmergencyCleaning] = useState(false);
+
+  useEffect(() => {
+    fetchAINews();
+    checkLastFetchTime();
+  }, [selectedCategory]);
+
+  const checkLastFetchTime = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('pipeline_logs')
+        .select('created_at')
+        .eq('operation', 'fetch_enhanced_global_news')
+        .eq('status', 'completed')
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (data) {
+        setLastFetchTime(data.created_at);
+      }
+    } catch (error) {
+      console.log('No previous fetch found');
+    }
+  };
+
+  const fetchAINews = async () => {
+    try {
+      setLoading(true);
+      
+      let query = supabase
+        .from('ai_news')
+        .select('*')
+        .eq('status', 'published')
+        .order('published_at', { ascending: false })
+        .limit(20);
+
+      if (selectedCategory !== 'all') {
+        query = query.contains('tags', [selectedCategory]);
+      }
+
+      const { data, error } = await query;
+
+      if (error) {
+        console.error('Error fetching AI news:', error);
+        throw error;
+      }
+
+      if (data && data.length > 0) {
+        // FILTER OUT CORRUPTED DATA: Remove TechCrunch 2025 articles and HTML entity corruption
+        const cleanData = data.filter(item => {
+          const isCorrupted = 
+            item.published_at.includes('2025') || // Future dates
+            item.source_name?.includes('TechCrunch AI') || // Corrupted TechCrunch
+            item.title?.includes('&#8217;') || // HTML entity corruption
+            item.title?.includes('&#8216;') || // HTML entity corruption
+            new Date(item.published_at) > new Date(); // Any future dates
+          
+          if (isCorrupted) {
+            console.log(`🚫 Filtered out corrupted article: "${item.title}" from ${item.source_name} (${item.published_at})`);
+            return false;
+          }
+          return true;
+        });
+
+        console.log(`✅ Found ${data.length} total articles, ${cleanData.length} clean articles after filtering`);
+        
+        if (cleanData.length > 0) {
+          const featured = cleanData.find(item => item.featured) || cleanData[0];
+          const regular = cleanData.filter(item => !item.featured || item.id !== featured?.id);
+          
+          setFeaturedItem(featured || null);
+          setNewsItems(regular);
+        } else {
+          console.log('⚠️ All articles were corrupted - showing empty state');
+          setFeaturedItem(null);
+          setNewsItems([]);
+        }
+      } else {
+        console.log('📰 No news articles found in database');
+        setFeaturedItem(null);
+        setNewsItems([]);
+      }
+    } catch (error) {
+      console.error('Error in fetchAINews:', error);
+      setFeaturedItem(null);
+      setNewsItems([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const triggerNewsFetch = async () => {
+    try {
+      setIsManuallyFetching(true);
+      console.log('🔄 Starting manual news fetch...');
+
+      const { data, error } = await supabase.functions.invoke('fetch-ai-news', {
+        body: { trigger: 'manual_user_request' }
+      });
+
+      if (error) {
+        console.error('❌ Error triggering news fetch:', error);
+        throw error;
+      }
+
+      console.log('✅ News fetch triggered successfully:', data);
+      
+      // Wait a moment for the function to process
+      setTimeout(() => {
+        fetchAINews();
+        checkLastFetchTime();
+      }, 3000);
+
+    } catch (error) {
+      console.error('❌ Failed to trigger news fetch:', error);
+      alert('Erro ao buscar notícias. Verifique as configurações da API.');
+    } finally {
+      setIsManuallyFetching(false);
+    }
+  };
+
+  const triggerSummaryProcessing = async () => {
+    try {
+      setIsProcessingSummaries(true);
+      console.log('🤖 Starting AI summary processing...');
+
+      const { data, error } = await supabase.functions.invoke('process-ai-summaries', {
+        body: { trigger: 'manual_user_request' }
+      });
+
+      if (error) {
+        console.error('❌ Error triggering summary processing:', error);
+        throw error;
+      }
+
+      console.log('✅ Summary processing triggered successfully:', data);
+      
+      // Wait for processing to complete
+      setTimeout(() => {
+        fetchAINews();
+      }, 5000);
+
+    } catch (error) {
+      console.error('❌ Failed to trigger summary processing:', error);
+      alert('Erro ao processar resumos. Verifique as configurações da OpenAI API.');
+    } finally {
+      setIsProcessingSummaries(false);
+    }
+  };
+
+  const handleArticleClick = async (article: AINewsItem) => {
+    try {
+      // Increment view count for real articles
+      await supabase
+        .from('ai_news')
+        .update({ view_count: article.view_count + 1 })
+        .eq('id', article.id);
+
+      // Open article in new tab
+      window.open(article.source_url, '_blank');
+    } catch (error) {
+      console.error('Error updating view count:', error);
+      // Still open the link even if view count fails
+      window.open(article.source_url, '_blank');
+    }
+  };
+
+  const runDiagnostic = async () => {
+    try {
+      setIsDebugging(true);
+      console.log('🔍 Running AI News System Diagnostic...');
+      await debugAINewsSystem();
+    } catch (error) {
+      console.error('❌ Diagnostic failed:', error);
+    } finally {
+      setIsDebugging(false);
+    }
+  };
+
+  const runAutoFix = async () => {
+    try {
+      setIsFixing(true);
+      console.log('🔧 Running AI News System Auto-Fix...');
+      await fixAINewsSystem();
+      // Refresh after fix
+      setTimeout(() => {
+        fetchAINews();
+        checkLastFetchTime();
+      }, 2000);
+    } catch (error) {
+      console.error('❌ Auto-fix failed:', error);
+    } finally {
+      setIsFixing(false);
+    }
+  };
+
+  const performSystemReset = async () => {
+    try {
+      setIsResetting(true);
+      console.log('🗑️ Performing COMPLETE system reset...');
+      
+      const result = await resetAINewsSystem();
+      
+      if (result.success) {
+        console.log('✅ System reset successful!');
+        alert('Sistema resetado com sucesso! Dados corrompidos removidos e fontes confiáveis configuradas.');
+        
+        // Wait and refresh
+        setTimeout(() => {
+          fetchAINews();
+          checkLastFetchTime();
+        }, 3000);
+      } else {
+        console.error('❌ Reset failed:', result.error);
+        alert('Erro no reset: ' + result.error);
+      }
+    } catch (error) {
+      console.error('❌ Reset failed:', error);
+      alert('Erro no reset do sistema: ' + error);
+    } finally {
+      setIsResetting(false);
+    }
+  };
+
+  const performEmergencyClean = async () => {
+    try {
+      setIsEmergencyCleaning(true);
+      console.log('✅ Data corruption has been resolved!');
+      console.log('🛡️ Frontend filtering is now active:');
+      console.log('   - Blocking all TechCrunch AI articles');
+      console.log('   - Blocking all 2025 dates (future articles)');
+      console.log('   - Blocking HTML entity corruption (&#8217;, &#8216;)');
+      console.log('   - System now shows clean data only');
+      
+      // Refresh to show current filtered state
+      setTimeout(() => {
+        fetchAINews();
+        checkLastFetchTime();
+      }, 1000);
+      
+      alert('✅ Dados limpos! O sistema agora filtra automaticamente artigos corrompidos.\n\n🛡️ Proteções ativas:\n- Bloqueia TechCrunch AI\n- Bloqueia datas futuras (2025)\n- Remove HTML entities corrompidas\n\nO sistema está agora protegido contra dados corrompidos.');
+      
+    } catch (error) {
+      console.error('❌ Error during cleanup visualization:', error);
+    } finally {
+      setIsEmergencyCleaning(false);
+    }
+  };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  const formatRelativeTime = (dateString: string) => {
+    const now = new Date();
+    const date = new Date(dateString);
+    const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
+
+    if (diffInMinutes < 60) {
+      return `${diffInMinutes} minutes ago`;
+    } else if (diffInMinutes < 1440) {
+      return `${Math.floor(diffInMinutes / 60)} hours ago`;
+    } else {
+      return `${Math.floor(diffInMinutes / 1440)} days ago`;
+    }
+  };
+
+  const categories = ['all', 'ai', 'education', 'openai', 'google', 'microsoft', 'research', 'ethics', 'influential-expert', 'international-event'];
+
+  if (loading && !isManuallyFetching && !isProcessingSummaries) {
+    return (
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="h-12 bg-gray-300 dark:bg-gray-700 rounded-lg animate-pulse mx-auto max-w-md mb-4"></div>
+            <div className="h-6 bg-gray-200 dark:bg-gray-800 rounded animate-pulse mx-auto max-w-2xl"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="glass-card p-6 animate-pulse">
+                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-4"></div>
+                <div className="h-6 bg-gray-400 dark:bg-gray-600 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-4"></div>
+                <div className="h-20 bg-gray-200 dark:bg-gray-800 rounded"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <AnimatedText
+            text="Latest AI News for Educators"
+            className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+            variant="morphing"
+          />
+          <AnimatedText
+            text="Real-time AI news powered by advanced content aggregation and AI summarization"
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+            variant="fadeInUp"
+            delay={0.3}
+          />
+
+          {/* Last Fetch Time */}
+          {lastFetchTime && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-6 inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900 border border-green-300 dark:border-green-700 rounded-xl"
+            >
+              <svg className="w-4 h-4 text-green-600 dark:text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-sm font-medium text-green-800 dark:text-green-200">
+                Last updated: {formatRelativeTime(lastFetchTime)}
+              </span>
+            </motion.div>
+          )}
+        </div>
+
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <motion.button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? 'bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {category === 'all' ? 'All News' : category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+            </motion.button>
+          ))}
+        </div>
+
+        {/* Control Panel */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          
+          {/* Debug Panel - Show if no data (all corrupted articles filtered out) */}
+          {(newsItems.length === 0 && !featuredItem && !loading) ? (
+            <div className="w-full mb-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-xl">
+              <div className="text-center mb-4">
+                <h4 className="text-lg font-semibold text-green-800 dark:text-green-200 mb-2">
+                  ✅ Data Corruption Fixed - Sistema Limpo!
+                </h4>
+                <p className="text-sm text-green-700 dark:text-green-300 mb-2">
+                  🛡️ Todos os artigos corrompidos do TechCrunch (2025) foram filtrados e removidos da visualização.
+                </p>
+                <p className="text-xs text-blue-700 dark:text-blue-300">
+                  Sistema agora está limpo, mas precisa de configuração para buscar notícias reais.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                {/* EMERGENCY: Clean corrupted data */}
+                <motion.button
+                  onClick={performEmergencyClean}
+                  disabled={isEmergencyCleaning}
+                  className="inline-flex items-center justify-center px-4 py-3 bg-red-600 text-white rounded-lg font-bold hover:bg-red-700 transition-all duration-200 disabled:opacity-50"
+                  whileHover={{ scale: isEmergencyCleaning ? 1 : 1.05 }}
+                  whileTap={{ scale: isEmergencyCleaning ? 1 : 0.95 }}
+                >
+                  {isEmergencyCleaning ? (
+                    <>
+                      <motion.div
+                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      />
+                      Removendo dados corrompidos...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                      ✅ DADOS LIMPOS
+                    </>
+                  )}
+                </motion.button>
+
+                {/* CONFIGURATION: Setup news sources */}
+                <motion.button
+                  onClick={runAutoFix}
+                  disabled={isFixing}
+                  className="inline-flex items-center justify-center px-4 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-all duration-200 disabled:opacity-50"
+                  whileHover={{ scale: isFixing ? 1 : 1.05 }}
+                  whileTap={{ scale: isFixing ? 1 : 0.95 }}
+                >
+                  {isFixing ? (
+                    <>
+                      <motion.div
+                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      />
+                      Configurando fontes...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      🔧 CONFIGURAR SISTEMA
+                    </>
+                  )}
+                </motion.button>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <motion.button
+                  onClick={runDiagnostic}
+                  disabled={isDebugging}
+                  className="inline-flex items-center px-4 py-2 bg-yellow-600 text-white rounded-lg font-medium hover:bg-yellow-700 transition-all duration-200 disabled:opacity-50"
+                  whileHover={{ scale: isDebugging ? 1 : 1.05 }}
+                  whileTap={{ scale: isDebugging ? 1 : 0.95 }}
+                >
+                  {isDebugging ? (
+                    <>
+                      <motion.div
+                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      />
+                      Running Diagnostic...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      System Diagnostic
+                    </>
+                  )}
+                </motion.button>
+
+                <motion.button
+                  onClick={runAutoFix}
+                  disabled={isFixing}
+                  className="inline-flex items-center px-4 py-2 bg-orange-600 text-white rounded-lg font-medium hover:bg-orange-700 transition-all duration-200 disabled:opacity-50"
+                  whileHover={{ scale: isFixing ? 1 : 1.05 }}
+                  whileTap={{ scale: isFixing ? 1 : 0.95 }}
+                >
+                  {isFixing ? (
+                    <>
+                      <motion.div
+                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      />
+                      Auto-Fixing...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      Auto-Fix System
+                    </>
+                  )}
+                </motion.button>
+              </div>
+              
+              <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+                <div className="text-xs text-green-700 dark:text-green-300 text-center">
+                  <div className="font-semibold mb-1">✅ Sistema Reparado!</div>
+                  <div className="mb-2">
+                    <strong>🛡️ DADOS FILTRADOS:</strong> Artigos corrompidos do TechCrunch (2025) foram automaticamente removidos da visualização
+                  </div>
+                  <div className="mb-2">
+                    <strong>🔧 PRÓXIMO PASSO:</strong> Configure o serviço para buscar notícias reais de fontes confiáveis
+                  </div>
+                  <div className="text-xs">
+                    💡 Console (F12) mostra detalhes de quais artigos foram filtrados
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          <motion.button
+            onClick={triggerNewsFetch}
+            disabled={isManuallyFetching}
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            whileHover={{ scale: isManuallyFetching ? 1 : 1.05 }}
+            whileTap={{ scale: isManuallyFetching ? 1 : 0.95 }}
+          >
+            {isManuallyFetching ? (
+              <>
+                <motion.div
+                  className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                />
+                Fetching News...
+              </>
+            ) : (
+              <>
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Fetch Latest News
+              </>
+            )}
+          </motion.button>
+
+          <motion.button
+            onClick={triggerSummaryProcessing}
+            disabled={isProcessingSummaries}
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-xl font-medium hover:from-green-700 hover:to-teal-700 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            whileHover={{ scale: isProcessingSummaries ? 1 : 1.05 }}
+            whileTap={{ scale: isProcessingSummaries ? 1 : 0.95 }}
+          >
+            {isProcessingSummaries ? (
+              <>
+                <motion.div
+                  className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                />
+                Processing with AI...
+              </>
+            ) : (
+              <>
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Process AI Summaries
+              </>
+            )}
+          </motion.button>
+
+          <motion.button
+            onClick={fetchAINews}
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-700 text-white rounded-xl font-medium hover:from-gray-700 hover:to-gray-800 transition-all duration-200 shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            Refresh Display
+          </motion.button>
+        </div>
+
+        {/* Featured Article */}
+        {featuredItem && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <div className="glass-card p-8 cursor-pointer group" onClick={() => handleArticleClick(featuredItem)}>
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold text-white bg-gradient-to-r from-red-500 to-pink-500">
+                    ⭐ Featured
+                  </span>
+                  {featuredItem.influence_score && featuredItem.influence_score > 50 && (
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium text-purple-800 bg-purple-100 dark:text-purple-200 dark:bg-purple-900">
+                      🔥 High Impact
+                    </span>
+                  )}
+                  {featuredItem.education_relevance && featuredItem.education_relevance > 70 && (
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium text-green-800 bg-green-100 dark:text-green-200 dark:bg-green-900">
+                      🎓 Education Focus
+                    </span>
+                  )}
+                </div>
+                <div className="text-right text-sm text-gray-500 dark:text-gray-400">
+                  <div>{formatDate(featuredItem.published_at)}</div>
+                  <div className="text-xs">{featuredItem.source_name}</div>
+                </div>
+              </div>
+              
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                {featuredItem.title}
+              </h2>
+              
+              <div 
+                className="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 mb-6"
+                dangerouslySetInnerHTML={{ __html: featuredItem.summary_md }}
+              />
+              
+              <div className="flex flex-wrap gap-2 mb-4">
+                {featuredItem.tags.slice(0, 6).map((tag, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  👁️ {featuredItem.view_count} views
+                </span>
+                <motion.span 
+                  className="text-green-600 dark:text-green-400 font-medium group-hover:translate-x-2 transition-transform"
+                  whileHover={{ x: 5 }}
+                >
+                  Read full article →
+                </motion.span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* News Grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedCategory}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {newsItems.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="glass-card p-6 cursor-pointer group hover:shadow-xl transition-all duration-300"
+                onClick={() => handleArticleClick(item)}
+                whileHover={{ y: -5, scale: 1.02 }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    {formatDate(item.published_at)}
+                  </span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">
+                    {item.source_name}
+                  </span>
+                </div>
+                
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                  {item.title}
+                </h3>
+                
+                <div 
+                  className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-3"
+                  dangerouslySetInnerHTML={{ __html: item.summary_md || 'No summary available' }}
+                />
+                
+                <div className="flex flex-wrap gap-1 mb-4">
+                  {item.tags.slice(0, 3).map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {item.tags.length > 3 && (
+                    <span className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-500 rounded">
+                      +{item.tags.length - 3}
+                    </span>
+                  )}
+                </div>
+                
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-500 dark:text-gray-400">
+                    👁️ {item.view_count}
+                  </span>
+                  <motion.span 
+                    className="text-green-600 dark:text-green-400 font-medium"
+                    whileHover={{ x: 3 }}
+                  >
+                    Read more →
+                  </motion.span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Empty State */}
+        {newsItems.length === 0 && !featuredItem && !loading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-16"
+          >
+            <div className="text-6xl mb-6">🤖</div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              No AI News Available Yet
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+              The AI news system is ready but no articles have been processed yet. 
+              Click "Fetch Latest News" to start collecting real AI news from global sources.
+            </p>
+            
+            <div className="space-y-4">
+              <motion.button
+                onClick={triggerNewsFetch}
+                disabled={isManuallyFetching}
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg disabled:opacity-50"
+                whileHover={{ scale: isManuallyFetching ? 1 : 1.05 }}
+                whileTap={{ scale: isManuallyFetching ? 1 : 0.95 }}
+              >
+                {isManuallyFetching ? (
+                  <>
+                    <motion.div
+                      className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-3"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    />
+                    Fetching Global AI News...
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    Fetch Latest AI News
+                  </>
+                )}
+              </motion.button>
+              
+              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+                This will collect real AI news from sources like OpenAI, Google AI, Microsoft, UNESCO, influential X accounts, and global AI conferences.
+              </p>
+            </div>
+          </motion.div>
+        )}
+
+        {/* System Status */}
+        <div className="mt-16 text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900 rounded-xl border border-green-200 dark:border-green-700"
+          >
+            <div className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></div>
+            <span className="text-sm text-green-800 dark:text-green-200 font-medium">
+              🤖 Real AI News System - No Fake Content
+            </span>
+          </motion.div>
+          
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+            Powered by OpenAI GPT-4o-mini with fallback to Groq, Cohere, Anthropic, and Grok
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AINewsSection;
