@@ -148,11 +148,11 @@ const DonationSection: React.FC<DonationSectionProps> = ({ language = 'en' }) =>
           </motion.p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Left side - Benefits */}
             <div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6">
                 {language === 'pt' ? 'Como você ajuda:' : 'How you help:'}
               </h3>
               <div className="space-y-4">
@@ -164,7 +164,7 @@ const DonationSection: React.FC<DonationSectionProps> = ({ language = 'en' }) =>
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + index * 0.1 }}
                   >
-                    <span className="text-lg">{benefit}</span>
+                    <span className="text-lg text-gray-700 dark:text-gray-300">{benefit}</span>
                   </motion.div>
                 ))}
               </div>
@@ -172,7 +172,7 @@ const DonationSection: React.FC<DonationSectionProps> = ({ language = 'en' }) =>
 
             {/* Right side - Donation form */}
             <div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6">
                 {language === 'pt' ? 'Escolha o valor:' : 'Choose amount:'}
               </h3>
               
@@ -183,8 +183,8 @@ const DonationSection: React.FC<DonationSectionProps> = ({ language = 'en' }) =>
                     key={amount.value}
                     className={`flex items-center space-x-3 p-4 rounded-lg border-2 cursor-pointer transition-all
                       ${selectedAmount === amount.value 
-                        ? 'border-indigo-500 bg-indigo-50' 
-                        : 'border-gray-200 hover:border-gray-300'}`}
+                        ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20' 
+                        : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'}`}
                   >
                     <input
                       type="radio"
@@ -194,7 +194,7 @@ const DonationSection: React.FC<DonationSectionProps> = ({ language = 'en' }) =>
                       onChange={() => setSelectedAmount(amount.value)}
                       className="w-4 h-4 text-indigo-600"
                     />
-                    <span className="text-lg font-medium">{amount.label}</span>
+                    <span className="text-lg font-medium text-gray-800 dark:text-white">{amount.label}</span>
                   </label>
                 ))}
                 
@@ -202,8 +202,8 @@ const DonationSection: React.FC<DonationSectionProps> = ({ language = 'en' }) =>
                 <label
                   className={`flex items-center space-x-3 p-4 rounded-lg border-2 cursor-pointer transition-all
                     ${selectedAmount === 'custom' 
-                      ? 'border-indigo-500 bg-indigo-50' 
-                      : 'border-gray-200 hover:border-gray-300'}`}
+                      ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20' 
+                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'}`}
                 >
                   <input
                     type="radio"
@@ -213,7 +213,7 @@ const DonationSection: React.FC<DonationSectionProps> = ({ language = 'en' }) =>
                     onChange={() => setSelectedAmount('custom')}
                     className="w-4 h-4 text-indigo-600"
                   />
-                  <span className="text-lg font-medium">{t.amounts.custom}</span>
+                  <span className="text-lg font-medium text-gray-800 dark:text-white">{t.amounts.custom}</span>
                 </label>
                 
                 {selectedAmount === 'custom' && (
@@ -226,7 +226,7 @@ const DonationSection: React.FC<DonationSectionProps> = ({ language = 'en' }) =>
                     onChange={(e) => setCustomAmount(e.target.value)}
                     min="10"
                     max="5000"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   />
                 )}
               </div>
@@ -246,7 +246,7 @@ const DonationSection: React.FC<DonationSectionProps> = ({ language = 'en' }) =>
                 {isLoading ? t.loadingButton : t.button}
               </motion.button>
 
-              <p className="text-center text-sm text-gray-500 mt-4">
+              <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
                 🔒 {t.securedBy}
               </p>
             </div>

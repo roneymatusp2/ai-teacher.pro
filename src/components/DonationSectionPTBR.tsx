@@ -93,11 +93,11 @@ const DonationSectionPTBR: React.FC = () => {
           </motion.p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Left side - Benefits */}
             <div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6">
                 Como você ajuda:
               </h3>
               <div className="space-y-4">
@@ -114,20 +114,20 @@ const DonationSectionPTBR: React.FC = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + index * 0.1 }}
                   >
-                    <span className="text-lg">{benefit}</span>
+                    <span className="text-lg text-gray-700 dark:text-gray-300">{benefit}</span>
                   </motion.div>
                 ))}
               </div>
               
-              <div className="mt-8 p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200">
+              <div className="mt-8 p-4 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg border border-green-200 dark:border-green-700">
                 <div className="flex items-center space-x-2 mb-2">
                   <span className="text-2xl">🎯</span>
-                  <h4 className="font-semibold text-gray-800">Transparência Total</h4>
+                  <h4 className="font-semibold text-gray-800 dark:text-white">Transparência Total</h4>
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   Todas as doações são utilizadas exclusivamente para:
                 </p>
-                <ul className="text-sm text-gray-600 mt-2 space-y-1">
+                <ul className="text-sm text-gray-600 dark:text-gray-300 mt-2 space-y-1">
                   <li>• Manutenção e hospedagem da plataforma</li>
                   <li>• Desenvolvimento de novos recursos</li>
                   <li>• Criação de conteúdo educacional</li>
@@ -138,7 +138,7 @@ const DonationSectionPTBR: React.FC = () => {
 
             {/* Right side - Donation form */}
             <div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6">
                 Escolha o valor da sua contribuição:
               </h3>
               
@@ -149,8 +149,8 @@ const DonationSectionPTBR: React.FC = () => {
                     key={amount.value}
                     className={`flex items-center space-x-3 p-4 rounded-lg border-2 cursor-pointer transition-all
                       ${selectedAmount === amount.value 
-                        ? 'border-indigo-500 bg-indigo-50' 
-                        : 'border-gray-200 hover:border-gray-300'}`}
+                        ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20' 
+                        : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'}`}
                   >
                     <input
                       type="radio"
@@ -160,8 +160,8 @@ const DonationSectionPTBR: React.FC = () => {
                       onChange={() => setSelectedAmount(amount.value)}
                       className="w-4 h-4 text-indigo-600"
                     />
-                    <span className="text-lg font-medium">{amount.label}</span>
-                    <div className="ml-auto text-sm text-gray-500">
+                    <span className="text-lg font-medium text-gray-800 dark:text-white">{amount.label}</span>
+                    <div className="ml-auto text-sm text-gray-500 dark:text-gray-400">
                       {amount.value === 20000 && '☕ Um café especial'}
                       {amount.value === 50000 && '🍕 Um almoço generoso'}
                       {amount.value === 100000 && '🎁 Um presente incrível'}
@@ -173,8 +173,8 @@ const DonationSectionPTBR: React.FC = () => {
                 <label
                   className={`flex items-center space-x-3 p-4 rounded-lg border-2 cursor-pointer transition-all
                     ${selectedAmount === 'custom' 
-                      ? 'border-indigo-500 bg-indigo-50' 
-                      : 'border-gray-200 hover:border-gray-300'}`}
+                      ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20' 
+                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'}`}
                 >
                   <input
                     type="radio"
@@ -184,8 +184,8 @@ const DonationSectionPTBR: React.FC = () => {
                     onChange={() => setSelectedAmount('custom')}
                     className="w-4 h-4 text-indigo-600"
                   />
-                  <span className="text-lg font-medium">Ou qualquer valor que seu coração mandar</span>
-                  <div className="ml-auto text-sm text-gray-500">💖 Do coração</div>
+                  <span className="text-lg font-medium text-gray-800 dark:text-white">Ou qualquer valor que seu coração mandar</span>
+                  <div className="ml-auto text-sm text-gray-500 dark:text-gray-400">💖 Do coração</div>
                 </label>
                 
                 {selectedAmount === 'custom' && (
@@ -201,9 +201,9 @@ const DonationSectionPTBR: React.FC = () => {
                       onChange={(e) => setCustomAmount(e.target.value)}
                       min="10"
                       max="5000"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                     />
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                       Valor mínimo: R$ 10,00 | Valor máximo: R$ 5.000,00
                     </p>
                   </motion.div>
@@ -236,10 +236,10 @@ const DonationSectionPTBR: React.FC = () => {
               </motion.button>
 
               <div className="mt-4 space-y-2">
-                <p className="text-center text-sm text-gray-500">
+                <p className="text-center text-sm text-gray-500 dark:text-gray-400">
                   🔒 Pagamento 100% seguro via Stripe
                 </p>
-                <p className="text-center text-xs text-gray-400">
+                <p className="text-center text-xs text-gray-400 dark:text-gray-500">
                   Aceitamos cartões de crédito, débito, PIX e outros métodos
                 </p>
               </div>
