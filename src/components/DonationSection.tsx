@@ -61,7 +61,7 @@ const DonationSection: React.FC<DonationSectionProps> = ({ language = 'en' }) =>
         </div>
 
         {/* Novo Sistema com Stripe Payment Links */}
-        <StripePaymentLinks />
+        <StripePaymentLinks language={language} />
       </div>
     </motion.section>
   );
