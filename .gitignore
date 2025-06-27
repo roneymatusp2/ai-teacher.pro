@@ -48,12 +48,13 @@ config/keys.js
 config/prod.js
 
 # Stripe Keys - NEVER COMMIT
-stripe_*
-*stripe*
+stripe_*.key
+stripe_*.json
 sk_live_*
 pk_live_*
 sk_test_*
 pk_test_*
+.env.stripe
 
 # Supabase
 .supabase
