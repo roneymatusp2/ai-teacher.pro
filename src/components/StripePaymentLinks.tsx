@@ -1,5 +1,24 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+
+// CSS para animação do coração
+const heartPulseStyle = `
+  @keyframes heartPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  .heart-pulse {
+    animation: heartPulse 1.5s ease-in-out infinite;
+  }
+`;
+
+// Injetar CSS no head
+if (typeof document !== 'undefined') {
+  const styleElement = document.createElement('style');
+  styleElement.textContent = heartPulseStyle;
+  document.head.appendChild(styleElement);
+}
 
 interface PaymentOption {
   id: string;
@@ -17,10 +36,12 @@ interface StripePaymentLinksProps {
 
 const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt' }) => {
   const [selectedAmount, setSelectedAmount] = useState<string | null>(null);
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<PaymentOption | null>(null);
   const [showPixModal, setShowPixModal] = useState(false);
   const [pixCopied, setPixCopied] = useState(false);
+
+  // DEBUG: Força o modal aberto para teste
+  // Descomente a linha abaixo para testar se o modal aparece
+  // setShowPixModal(true);
 
   // PIX Code
   const pixCode = '00020126450014br.gov.bcb.pix0123roney.nascimento@usp.br5204000053039865802BR5914AI-Teacher.pro6009Sao Paulo62180514TXrrqeqd5c771263049B38';
@@ -30,9 +51,18 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
     pt: {
       title: '💝 Apoie Nossa Missão Educacional',
       subtitle: 'Ajude-nos a continuar fornecendo conteúdo educacional de qualidade com IA',
-      paymentInfo: 'Pagamento 100% seguro • Escolha entre PIX ou Cartão de Crédito',
+      paymentInfo: 'Pagamento 100% seguro • Cartão via Stripe ou PIX instantâneo',
       popular: '⭐ POPULAR',
-      donateButton: 'Escolher Método 💳',
+      donateButton: 'Doar via Cartão 💳',
+      pixButton: 'Doar via PIX 💚',
+      pixButtonSubtitle: 'Instantâneo e sem taxas',
+      pixButtonText: 'Abrir PIX',
+      pixBenefits: {
+        instant: 'Instantâneo',
+        noFees: 'Sem taxas',
+        secure: '100% seguro',
+        anyAmount: 'Qualquer valor'
+      },
       redirecting: 'Redirecionando...',
       howItHelps: '🎯 Como sua doação ajuda:',
       benefits: [
@@ -50,15 +80,6 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
         '• Suporte aos usuários'
       ],
       securedBy: 'Protegido pelo Stripe',
-      paymentModal: {
-        title: 'Como você gostaria de doar?',
-        subtitle: 'Escolha o método de pagamento de sua preferência',
-        pixButton: '💚 Pagar com PIX',
-        pixDescription: 'Instantâneo e sem taxas',
-        cardButton: '💳 Pagar com Cartão',
-        cardDescription: 'Seguro via Stripe',
-        closeButton: 'Fechar'
-      },
       pixModal: {
         title: 'Doação via PIX',
         subtitle: 'Escaneie o código QR ou copie o código PIX',
@@ -122,9 +143,18 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
     en: {
       title: '💝 Support Our Educational Mission',
       subtitle: 'Help us continue providing quality AI-powered educational content',
-      paymentInfo: '100% secure payment • Choose between PIX or Credit Card',
+      paymentInfo: '100% secure payment • Card via Stripe or instant PIX',
       popular: '⭐ POPULAR',
-      donateButton: 'Choose Method 💳',
+      donateButton: 'Donate via Card 💳',
+      pixButton: 'Donate via PIX 💚',
+      pixButtonSubtitle: 'Instant and no fees',
+      pixButtonText: 'Open PIX',
+      pixBenefits: {
+        instant: 'Instant',
+        noFees: 'No fees',
+        secure: '100% secure',
+        anyAmount: 'Any amount'
+      },
       redirecting: 'Redirecting...',
       howItHelps: '🎯 How your donation helps:',
       benefits: [
@@ -142,15 +172,6 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
         '• User support'
       ],
       securedBy: 'Secured by Stripe',
-      paymentModal: {
-        title: 'How would you like to donate?',
-        subtitle: 'Choose your preferred payment method',
-        pixButton: '💚 Pay with PIX',
-        pixDescription: 'Instant and no fees',
-        cardButton: '💳 Pay with Card',
-        cardDescription: 'Secure via Stripe',
-        closeButton: 'Close'
-      },
       pixModal: {
         title: 'PIX Donation',
         subtitle: 'Scan the QR code or copy the PIX code',
@@ -216,31 +237,38 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
   const t = content[language];
   const paymentOptions = t.paymentOptions;
 
-  const handleAmountClick = (option: PaymentOption) => {
-    setSelectedOption(option);
-    setShowPaymentModal(true);
+  // Função para pagamento via Stripe (original)
+  const handleStripePayment = (option: PaymentOption) => {
+    setSelectedAmount(option.id);
+    window.open(option.url, '_blank', 'noopener,noreferrer');
+    setTimeout(() => {
+      setSelectedAmount(null);
+    }, 2000);
   };
 
-  const handlePixPayment = () => {
-    setShowPaymentModal(false);
-    setShowPixModal(true);
-  };
-
-  const handleCardPayment = () => {
-    if (selectedOption) {
-      setSelectedAmount(selectedOption.id);
-      setShowPaymentModal(false);
-      
-      // Abrir Payment Link do Stripe em nova aba
-      window.open(selectedOption.url, '_blank', 'noopener,noreferrer');
-      
-      // Reset selection after a moment
-      setTimeout(() => {
-        setSelectedAmount(null);
-      }, 2000);
+  // Função para abrir modal PIX
+  const openPixModal = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
     }
+    console.log('🚀 Abrindo modal PIX - Estado atual:', showPixModal);
+    setShowPixModal(true);
+    console.log('🚀 Modal PIX definido como true');
   };
 
+  // Função para fechar modal PIX
+  const closePixModal = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    console.log('🚀 Fechando modal PIX');
+    setShowPixModal(false);
+    setPixCopied(false);
+  };
+
+  // Função para copiar código PIX
   const copyPixCode = async () => {
     try {
       await navigator.clipboard.writeText(pixCode);
@@ -249,13 +277,6 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
     } catch (err) {
       console.error('Failed to copy PIX code:', err);
     }
-  };
-
-  const closeModals = () => {
-    setShowPaymentModal(false);
-    setShowPixModal(false);
-    setSelectedOption(null);
-    setPixCopied(false);
   };
 
   return (
@@ -288,8 +309,11 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
           </motion.p>
         </div>
 
-        {/* Payment Options Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {/* Payment Options Grid + PIX Button */}
+        <div className="flex flex-col lg:flex-row gap-8 mb-8">
+          {/* Cards Grid */}
+          <div className="flex-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {paymentOptions.map((option, index) => (
             <motion.div
               key={option.id}
@@ -307,50 +331,126 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
                 </div>
               )}
 
-              <motion.button
-                onClick={() => handleAmountClick(option)}
-                disabled={selectedAmount === option.id}
-                className={`w-full p-6 rounded-2xl border-2 transition-all duration-300 group hover:scale-105 hover:shadow-xl ${
-                  selectedAmount === option.id
-                    ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                    : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-700'
-                } ${option.popular ? 'ring-2 ring-yellow-400 ring-opacity-50' : ''}`}
-                whileHover={{ scale: selectedAmount === option.id ? 1 : 1.02 }}
-                whileTap={{ scale: selectedAmount === option.id ? 1 : 0.98 }}
-              >
+              <div className="bg-white dark:bg-gray-700 rounded-2xl border-2 border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 p-6 transition-all duration-300 hover:shadow-xl">
                 {/* Emoji */}
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-4xl mb-3 text-center">
                   {option.emoji}
                 </div>
 
                 {/* Amount */}
-                <div className={`text-2xl font-bold mb-2 bg-gradient-to-r ${option.color} bg-clip-text text-transparent`}>
+                <div className={`text-2xl font-bold mb-2 text-center bg-gradient-to-r ${option.color} bg-clip-text text-transparent`}>
                   {option.amount}
                 </div>
 
                 {/* Description */}
-                <div className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                <div className="text-sm text-gray-600 dark:text-gray-300 mb-4 text-center">
                   {option.description}
                 </div>
 
-                {/* Button State */}
-                {selectedAmount === option.id ? (
-                  <div className="flex items-center justify-center space-x-2 text-green-600 dark:text-green-400">
-                    <motion.div
-                      className="w-4 h-4 border-2 border-green-600 border-t-transparent rounded-full"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    />
-                    <span className="text-sm font-medium">{t.redirecting}</span>
-                  </div>
-                ) : (
-                  <div className={`bg-gradient-to-r ${option.color} text-white px-4 py-2 rounded-lg font-medium text-sm group-hover:shadow-lg transition-shadow duration-300`}>
-                    {t.donateButton}
-                  </div>
-                )}
-              </motion.button>
+                {/* Botões lado a lado */}
+                <div className="space-y-3">
+                  {/* Botão Stripe */}
+                  <motion.button
+                    onClick={() => handleStripePayment(option)}
+                    disabled={selectedAmount === option.id}
+                    className={`w-full p-3 rounded-xl font-medium text-sm transition-all duration-300 ${
+                      selectedAmount === option.id
+                        ? 'bg-green-500 text-white'
+                        : `bg-gradient-to-r ${option.color} text-white hover:shadow-lg`
+                    }`}
+                    whileHover={{ scale: selectedAmount === option.id ? 1 : 1.02 }}
+                    whileTap={{ scale: selectedAmount === option.id ? 1 : 0.98 }}
+                  >
+                    {selectedAmount === option.id ? (
+                      <div className="flex items-center justify-center space-x-2">
+                        <motion.div
+                          className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        />
+                        <span>{t.redirecting}</span>
+                      </div>
+                    ) : (
+                      t.donateButton
+                    )}
+                  </motion.button>
+
+
+                </div>
+              </div>
+                          </motion.div>
+            ))}
+            </div>
+          </div>
+
+          {/* BOTÃO PIX ÚNICO GIGANTE AO LADO */}
+          <div className="lg:w-80">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5 }}
+              className="bg-gradient-to-br from-green-400 via-green-500 to-emerald-600 rounded-3xl p-8 shadow-2xl border-4 border-green-300 hover:shadow-green-500/25 transition-all duration-300 hover:scale-105"
+            >
+              {/* Coração Pulsante Gigante */}
+              <div className="text-center mb-6">
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.3, 1],
+                    rotate: [0, 10, -10, 0]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                  className="text-8xl mb-4 drop-shadow-lg"
+                >
+                  💚
+                </motion.div>
+                <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-md">
+                  {t.pixButton}
+                </h3>
+                <p className="text-green-100 text-lg font-medium">
+                  {t.pixButtonSubtitle}
+                </p>
+              </div>
+
+              {/* Botão PIX */}
+              <button
+                onClick={() => {
+                  console.log('🚀 Clique PIX!');
+                  setShowPixModal(true);
+                }}
+                className="w-full p-6 bg-white hover:bg-green-50 text-green-600 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3 border-2 border-green-200 hover:border-green-300"
+                style={{
+                  boxShadow: '0 0 20px rgba(16, 185, 129, 0.3), 0 10px 30px rgba(0,0,0,0.1)'
+                }}
+              >
+                <span className="text-3xl">📱</span>
+                <span>{t.pixButtonText}</span>
+              </button>
+
+              {/* Benefícios do PIX */}
+              <div className="mt-6 space-y-3">
+                <div className="flex items-center space-x-3 text-white">
+                  <span className="text-xl">⚡</span>
+                  <span className="font-medium">{t.pixBenefits.instant}</span>
+                </div>
+                <div className="flex items-center space-x-3 text-white">
+                  <span className="text-xl">💰</span>
+                  <span className="font-medium">{t.pixBenefits.noFees}</span>
+                </div>
+                <div className="flex items-center space-x-3 text-white">
+                  <span className="text-xl">🔒</span>
+                  <span className="font-medium">{t.pixBenefits.secure}</span>
+                </div>
+                <div className="flex items-center space-x-3 text-white">
+                  <span className="text-xl">📲</span>
+                  <span className="font-medium">{t.pixBenefits.anyAmount}</span>
+                </div>
+              </div>
             </motion.div>
-          ))}
+          </div>
         </div>
 
         {/* Benefits Section */}
@@ -426,254 +526,107 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
         </motion.div>
       </div>
 
-      {/* Payment Method Selection Modal */}
-      <AnimatePresence>
-        {showPaymentModal && selectedOption && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
-              onClick={closeModals}
-            />
-
-            {/* Modal */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      {/* MODAL PIX SIMPLES */}
+      {showPixModal && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            zIndex: '999999',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-end',
+            paddingBottom: '-5px'
+          }}
+          onClick={() => setShowPixModal(false)}
+        >
+          <div 
+            style={{
+              backgroundColor: 'white',
+              padding: '30px',
+              borderRadius: '15px',
+              maxWidth: '400px',
+              width: '90%',
+              textAlign: 'center',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
+              border: '2px solid #10b981'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 style={{ margin: '0 0 20px 0', fontSize: '24px' }}>
+              💚 {language === 'en' ? 'PIX Donation' : 'Doação PIX'}
+            </h2>
+            
+            <p style={{ margin: '0 0 20px 0', color: '#666' }}>
+              {language === 'en' ? 'Scan QR Code or copy PIX code' : 'Escaneie o QR Code ou copie o código PIX'}
+            </p>
+            
+            <div style={{ margin: '20px 0' }}>
+              <img 
+                src="https://nyc.cloud.appwrite.io/v1/storage/buckets/686435bf000edf105b7c/files/686435e90001a6408df5/view?project=680e68b10024125b5c0b&mode=admin"
+                alt="PIX QR Code"
+                style={{ width: '200px', height: '200px', border: '2px solid #10b981', borderRadius: '10px' }}
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  target.src = '/images/pix-qrcode-ai-teacher.pro.png';
+                }}
+              />
+            </div>
+            
+            <div style={{ backgroundColor: '#ffffff', padding: '15px', borderRadius: '8px', margin: '20px 0', border: '2px solid #6c757d', boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.1)' }}>
+              <code style={{ fontSize: '11px', wordBreak: 'break-all', color: '#000000', fontFamily: 'Courier New, monospace', lineHeight: '1.5', fontWeight: '600' }}>
+                {pixCode}
+              </code>
+            </div>
+            
+            <button 
+              onClick={copyPixCode}
+              style={{
+                width: '100%',
+                padding: '15px',
+                backgroundColor: pixCopied ? '#10b981' : '#007bff',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '16px',
+                cursor: 'pointer',
+                marginBottom: '10px'
+              }}
             >
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 max-w-md w-full border border-gray-200 dark:border-gray-700">
-                {/* Header */}
-                <div className="text-center mb-6">
-                  <div className="text-4xl mb-3">{selectedOption.emoji}</div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                    {selectedOption.amount}
-                  </h3>
-                  <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
-                    {t.paymentModal.title}
-                  </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {t.paymentModal.subtitle}
-                  </p>
-                </div>
-
-                {/* Payment Options */}
-                <div className="space-y-4 mb-6">
-                                     {/* PIX Option */}
-                   <motion.button
-                     onClick={handlePixPayment}
-                     className="w-full p-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-semibold hover:from-green-600 hover:to-emerald-700 transition-all duration-200 shadow-lg relative overflow-hidden"
-                     whileHover={{ scale: 1.02, y: -2 }}
-                     whileTap={{ scale: 0.98 }}
-                   >
-                     {/* Pulsating Heart Background */}
-                     <motion.div
-                       className="absolute inset-0 flex items-center justify-center opacity-10"
-                       animate={{ 
-                         scale: [1, 1.1, 1],
-                         opacity: [0.1, 0.2, 0.1]
-                       }}
-                       transition={{ 
-                         duration: 2,
-                         repeat: Infinity,
-                         ease: "easeInOut"
-                       }}
-                     >
-                       <span className="text-6xl">💚</span>
-                     </motion.div>
-                     
-                     <div className="flex items-center justify-between relative z-10">
-                       <div className="flex items-center space-x-3">
-                         <motion.span 
-                           className="text-2xl"
-                           animate={{ 
-                             scale: [1, 1.2, 1],
-                           }}
-                           transition={{ 
-                             duration: 1.5,
-                             repeat: Infinity,
-                             ease: "easeInOut"
-                           }}
-                         >
-                           💚
-                         </motion.span>
-                         <div className="text-left">
-                           <div className="font-bold">{t.paymentModal.pixButton}</div>
-                           <div className="text-sm opacity-90">{t.paymentModal.pixDescription}</div>
-                         </div>
-                       </div>
-                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                       </svg>
-                     </div>
-                   </motion.button>
-
-                  {/* Card Option */}
-                  <motion.button
-                    onClick={handleCardPayment}
-                    className="w-full p-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all duration-200 shadow-lg"
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <span className="text-2xl">💳</span>
-                        <div className="text-left">
-                          <div className="font-bold">{t.paymentModal.cardButton}</div>
-                          <div className="text-sm opacity-90">{t.paymentModal.cardDescription}</div>
-                        </div>
-                      </div>
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </motion.button>
-                </div>
-
-                {/* Close Button */}
-                <button
-                  onClick={closeModals}
-                  className="w-full px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
-                >
-                  {t.paymentModal.closeButton}
-                </button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
-      {/* PIX Modal */}
-      <AnimatePresence>
-        {showPixModal && selectedOption && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
-              onClick={closeModals}
-            />
-
-            {/* Modal */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+              {pixCopied ? '✅ ' + (language === 'en' ? 'Copied!' : 'Copiado!') : '📋 ' + (language === 'en' ? 'Copy PIX Code' : 'Copiar Código PIX')}
+            </button>
+            
+            <button 
+              onClick={() => setShowPixModal(false)}
+              style={{
+                width: '100%',
+                padding: '15px',
+                backgroundColor: '#dc3545',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '16px',
+                cursor: 'pointer',
+                fontWeight: '600'
+              }}
             >
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700">
-                {/* Header */}
-                <div className="text-center mb-6">
-                  <div className="flex items-center justify-center space-x-2 mb-3">
-                    <span className="text-3xl">💚</span>
-                    <span className="text-3xl">{selectedOption.emoji}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                    {t.pixModal.title}
-                  </h3>
-                  <p className="text-lg font-semibold text-green-600 dark:text-green-400 mb-2">
-                    {selectedOption.amount}
-                  </p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {t.pixModal.subtitle}
-                  </p>
-                </div>
+              ❌ {language === 'en' ? 'Close' : 'Fechar'}
+            </button>
+          </div>
+        </div>
+      )}
 
-                {/* QR Code Section */}
-                <div className="text-center mb-6">
-                  <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
-                    {t.pixModal.qrTitle}
-                  </h4>
-                  <div className="inline-block p-4 bg-white rounded-2xl shadow-lg">
-                    <img
-                      src="/images/pix-qrcode-ai-teacher.pro.png"
-                      alt="QR Code PIX AI-Teacher.pro"
-                      className="w-48 h-48 mx-auto"
-                    />
-                  </div>
-                </div>
-
-                {/* PIX Code Section */}
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
-                    {t.pixModal.codeTitle}
-                  </h4>
-                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-4">
-                    <code className="text-xs text-gray-700 dark:text-gray-300 break-all font-mono">
-                      {pixCode}
-                    </code>
-                  </div>
-                                     <motion.button
-                     onClick={copyPixCode}
-                     disabled={pixCopied}
-                     className={`w-full px-4 py-3 rounded-xl font-semibold transition-all duration-200 shadow-lg ${
-                       pixCopied 
-                         ? 'bg-gradient-to-r from-green-600 to-emerald-700 text-white' 
-                         : 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700'
-                     }`}
-                     whileHover={{ scale: pixCopied ? 1 : 1.02 }}
-                     whileTap={{ scale: pixCopied ? 1 : 0.98 }}
-                   >
-                     <div className="flex items-center justify-center space-x-2">
-                       {pixCopied ? (
-                         <>
-                           <motion.svg 
-                             className="w-5 h-5" 
-                             fill="none" 
-                             stroke="currentColor" 
-                             viewBox="0 0 24 24"
-                             initial={{ scale: 0 }}
-                             animate={{ scale: 1 }}
-                             transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                           >
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                           </motion.svg>
-                           <span>{t.pixModal.copied}</span>
-                         </>
-                       ) : (
-                         <>
-                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                           </svg>
-                           <span>{t.pixModal.copyButton}</span>
-                         </>
-                       )}
-                     </div>
-                   </motion.button>
-                </div>
-
-                {/* Instructions */}
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 mb-6">
-                  <h4 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-3">
-                    {t.pixModal.instructions}
-                  </h4>
-                  <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                    {t.pixModal.steps.map((step, index) => (
-                      <li key={index}>{step}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Close Button */}
-                <button
-                  onClick={closeModals}
-                  className="w-full px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
-                >
-                  {t.pixModal.closeButton}
-                </button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      <style>{`
+        @keyframes heartPulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.2); }
+          100% { transform: scale(1); }
+        }
+      `}</style>
     </>
   );
 };
