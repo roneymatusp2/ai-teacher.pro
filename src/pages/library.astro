@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LibraryPage from './LibraryPage.tsx';
 import Navigation from '../components/Navigation';
 import FloatingCardGrid from '../components/FloatingCardGrid';
 import Footer from '../components/Footer';
@@ -14,7 +15,8 @@ const libraryResources = mockResources.filter(resource =>
 <Layout title="AI Education Library - Books & Resources" description="Comprehensive library of books, research papers, and educational websites about artificial intelligence in education.">
   <Navigation client:load />
   
-  <main class="pt-20">
+  <!-- Render React LibraryPage component -->
+  <LibraryPage client:load />
     <!-- Page Header -->
     <section class="py-16 bg-gradient-to-r from-orange-600 to-red-600">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

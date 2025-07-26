@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LearnPage from './LearnPage.tsx';
 import Navigation from '../components/Navigation';
 import FloatingCardGrid from '../components/FloatingCardGrid';
 import Footer from '../components/Footer';
@@ -14,7 +15,8 @@ const learningResources = mockResources.filter(resource =>
 <Layout title="Learn AI for Education - Courses & Certifications" description="Professional development courses and certifications in educational AI. Advance your career with expert-led training programmes.">
   <Navigation client:load />
   
-  <main class="pt-20">
+  <!-- Render React LearnPage component -->
+  <LearnPage client:load />
     <!-- Page Header -->
     <section class="py-16 bg-gradient-to-r from-purple-600 to-pink-600">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
