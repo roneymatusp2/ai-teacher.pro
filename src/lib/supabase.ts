@@ -8,19 +8,27 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 export interface Resource {
   id: string;
   category: 'ai_tool' | 'course' | 'certification' | 'book' | 'site' | 'youtube';
-  title: string;
-  description?: string;
+  title: string; // Portuguese Title
+  title_en?: string; // English Title
+  description?: string; // Portuguese Description
+  description_en?: string; // English Description
   url?: string;
-  tags: string[];
+  tags: string[]; // Portuguese Tags
+  tags_en?: string[]; // English Tags
   cover_url?: string;
   provider_meta?: {
-    type?: string;
+    type?: string; // Portuguese Type
+    type_en?: string; // English Type
     eligibility?: string;
     geo_scope?: string;
-    pricing?: string;
-    key_features?: string;
-    ai_relevance?: string;
-    future_potential?: string;
+    pricing?: string; // Portuguese Pricing
+    pricing_en?: string; // English Pricing
+    key_features?: string; // Portuguese Key Features
+    key_features_en?: string; // English Key Features
+    ai_relevance?: string; // Portuguese AI Relevance
+    ai_relevance_en?: string; // English AI Relevance
+    future_potential?: string; // Portuguese Future Potential
+    future_potential_en?: string; // English Future Potential
   };
   created_at: string;
   updated_at: string;
