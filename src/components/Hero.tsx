@@ -1,12 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import AnimatedText from './AnimatedText';
 import MorphingButton from './MorphingButton';
 import AnimatedBackground from './AnimatedBackground';
 import ParallaxSection from './ParallaxSection';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  lang: 'en' | 'pt-br';
+}
+
+const Hero: React.FC<HeroProps> = ({ lang }) => {
+  const navigate = useNavigate();
+  const content = {
+    en: {
+      title: 'Generative AI for Teachers',
+      subtitle: 'Empowering educators to harness the transformative power of artificial intelligence in their classrooms.',
+      getBook: 'Get the Book',
+      exploreTools: 'Explore AI Tools',
+      bookUrl: 'https://www.amazon.com/dp/B0FF3L24H6',
+    },
+    'pt-br': {
+      title: 'IA Generativa para Professores',
+      subtitle: 'Capacitando educadores a aproveitar o poder transformador da inteligência artificial em suas salas de aula.',
+      getBook: 'Adquirir o Livro',
+      exploreTools: 'Explorar Ferramentas IA',
+      bookUrl: 'https://www.amazon.com.br/dp/B0FF9NBJNT',
+    },
+  };
+
+  const t = content[lang];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -52,12 +76,7 @@ const Hero: React.FC = () => {
   };
 
   const handleGetBookClick = () => {
-    const aboutSection = document.getElementById('buy');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.href = '/about#buy';
-    }
+    window.open(t.bookUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -174,25 +193,25 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8"
           >
             <MorphingButton
-              onClick={handleGetBookClick}
+              href={t.bookUrl}
               variant="primary"
               className="text-lg px-10 py-5"
             >
               <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
-              Get the Book
+              {t.getBook}
             </MorphingButton>
             
             <MorphingButton
-              href="/tools"
+              onClick={() => navigate('/tools')}
               variant="secondary"
               className="text-lg px-10 py-5"
             >
               <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              Explore AI Tools
+              {t.exploreTools}
             </MorphingButton>
           </motion.div>
 
@@ -204,7 +223,7 @@ const Hero: React.FC = () => {
             className="pt-8"
           >
             <AnimatedText
-              text="Generative AI for Teachers"
+              text={t.title}
               className="text-lg md:text-xl font-medium text-green-100/80 text-shadow"
               variant="fadeInUp"
               delay={1.0}

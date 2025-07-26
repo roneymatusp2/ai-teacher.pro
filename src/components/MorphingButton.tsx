@@ -193,8 +193,66 @@ const MorphingButton: React.FC<MorphingButtonProps> = ({
 
   if (href) {
     return (
-      <motion.a href={href} className="inline-block">
-        <ButtonContent />
+      <motion.a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        variants={buttonVariants}
+        initial="initial"
+        whileHover="hover"
+        whileTap="tap"
+        className={`${baseClasses} ${variants[variant]} ${className} px-8 py-4 perspective-1000 inline-flex items-center justify-center overflow-hidden rounded-2xl`}
+        onClick={onClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onMouseDown={() => setIsPressed(true)}
+        onMouseUp={() => setIsPressed(false)}
+        style={{
+          transformStyle: 'preserve-3d',
+          perspective: '1000px'
+        }}
+      >
+        {/* Glow effect */}
+        <motion.div
+          variants={glowVariants}
+          initial="initial"
+          animate={isHovered ? "hover" : "initial"}
+          className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-400 rounded-2xl blur-lg"
+          style={{ zIndex: -1 }}
+        />
+
+        {/* Shimmer effect */}
+        <motion.div
+          variants={shimmerVariants}
+          initial="initial"
+          animate={isHovered ? "hover" : "initial"}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-2xl"
+          style={{ transform: 'skewX(-20deg)' }}
+        />
+
+        {/* Ripple effect */}
+        <AnimatePresence>
+          {isPressed && (
+            <motion.div
+              variants={rippleVariants}
+              initial="initial"
+              animate="animate"
+              exit="initial"
+              className="absolute inset-0 bg-white/20 rounded-2xl"
+            />
+          )}
+        </AnimatePresence>
+
+        {/* Content */}
+        <motion.span
+          className="relative z-10 flex items-center justify-center"
+          animate={{
+            y: isPressed ? 1 : 0,
+          }}
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        >
+          {children}
+        </motion.span>
       </motion.a>
     );
   }

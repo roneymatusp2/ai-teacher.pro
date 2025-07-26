@@ -56,8 +56,8 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <Hero />
-      
+      <Hero lang='en' />
+
       {/* AI News Section */}
       <AINewsSection />
       

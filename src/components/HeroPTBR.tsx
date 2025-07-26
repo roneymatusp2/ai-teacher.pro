@@ -50,14 +50,8 @@ const HeroPTBR: React.FC = () => {
     },
   };
 
-  const handleGetBookClick = () => {
-    const aboutSection = document.getElementById('buy');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.href = '/pt-br/about#buy';
-    }
-  };
+  const bookUrl = 'https://www.amazon.com.br/dp/B0FF9NBJNT';
+
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -186,7 +180,7 @@ const HeroPTBR: React.FC = () => {
               className="flex flex-col sm:flex-row gap-6 pt-4"
             >
               <MorphingButton
-                onClick={handleGetBookClick}
+                href={bookUrl}
                 variant="primary"
                 className="text-lg px-10 py-5"
               >
