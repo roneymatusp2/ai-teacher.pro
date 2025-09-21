@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import type { NewsSource } from './supabase';
 
 // Admin client for operations that require bypassing RLS
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -52,7 +53,7 @@ export const adminInsertNewsSource = async (sourceData: any) => {
   return data;
 };
 
-export const adminUpdateNewsSource = async (id: string, updates: any) => {
+export const adminUpdateNewsSource = async (id: string, updates: Partial<NewsSource>) => {
   if (!supabaseAdmin) {
     throw new Error('Admin client not initialized. Please add SUPABASE_SERVICE_ROLE_KEY to .env');
   }

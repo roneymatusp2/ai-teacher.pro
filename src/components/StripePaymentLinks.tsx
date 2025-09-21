@@ -329,9 +329,7 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
       e.preventDefault();
       e.stopPropagation();
     }
-    console.log('🚀 Abrindo modal PIX - Estado atual:', showPixModal);
     setShowPixModal(true);
-    console.log('🚀 Modal PIX definido como true');
   };
 
   // Função para fechar modal PIX
@@ -340,7 +338,6 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
       e.preventDefault();
       e.stopPropagation();
     }
-    console.log('🚀 Fechando modal PIX');
     setShowPixModal(false);
     setPixCopied(false);
     setDonorName('');
@@ -508,10 +505,7 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
 
               {/* Botão PIX */}
               <button
-                onClick={() => {
-                  console.log('🚀 Clique PIX!');
-                  setShowPixModal(true);
-                }}
+                onClick={() => setShowPixModal(true)}
                 className="w-full p-6 bg-white hover:bg-green-50 text-green-600 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3 border-2 border-green-200 hover:border-green-300"
                 style={{
                   boxShadow: '0 0 20px rgba(16, 185, 129, 0.3), 0 10px 30px rgba(0,0,0,0.1)'
