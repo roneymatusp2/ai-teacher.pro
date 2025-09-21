@@ -38,6 +38,8 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
   const [selectedAmount, setSelectedAmount] = useState<string | null>(null);
   const [showPixModal, setShowPixModal] = useState(false);
   const [pixCopied, setPixCopied] = useState(false);
+  const [donorName, setDonorName] = useState('');
+  const [donorMessage, setDonorMessage] = useState('');
 
   // DEBUG: Força o modal aberto para teste
   // Descomente a linha abaixo para testar se o modal aparece
@@ -45,6 +47,7 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
 
   // PIX Code
   const pixCode = '00020126450014br.gov.bcb.pix0123roney.nascimento@usp.br5204000053039865802BR5914AI-Teacher.pro6009Sao Paulo62180514TXrrqeqd5c771263049B38';
+  const contactEmail = 'roney.nascimento@usp.br';
 
   // Conteúdo internacionalizado
   const content = {
@@ -94,7 +97,12 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
           '3. Escaneie o QR Code ou cole o código',
           '4. Confirme o pagamento'
         ],
-        closeButton: 'Fechar'
+        closeButton: 'Fechar',
+        noteTitle: 'Deixe um recadinho (opcional)',
+        namePlaceholder: 'Seu nome (opcional)',
+        messagePlaceholder: 'Escreva seu recado aqui... (agradecimentos, dedicatória, etc.)',
+        sendEmailButton: 'Enviar recado por e‑mail',
+        noteInfo: 'Alguns bancos não transmitem mensagem junto com o PIX estático. Envie seu recado por aqui e ele chegará para nós.'
       },
       paymentOptions: [
         {
@@ -137,6 +145,38 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
           emoji: '🚀',
           color: 'from-purple-500 to-violet-600',
           url: 'https://buy.stripe.com/eVq9ATdAz2md0HpgZV2sM05'
+        },
+        {
+          id: '10000',
+          amount: 'R$ 10.000',
+          description: 'Impulsionando novas iniciativas educacionais',
+          emoji: '🏫',
+          color: 'from-emerald-500 to-teal-600',
+          url: 'https://buy.stripe.com/6oUaEXdAzbWNfCjaBx2sM07'
+        },
+        {
+          id: '25000',
+          amount: 'R$ 25.000',
+          description: 'Patrocínio visionário para educadores',
+          emoji: '🌟',
+          color: 'from-cyan-500 to-sky-600',
+          url: 'https://buy.stripe.com/4gM14n687e4V61J3952sM08'
+        },
+        {
+          id: '50000',
+          amount: 'R$ 50.000',
+          description: 'Acelerando inovação e impacto global',
+          emoji: '🌍',
+          color: 'from-indigo-500 to-blue-700',
+          url: 'https://buy.stripe.com/14AfZh1RR3qh61J2512sM09'
+        },
+        {
+          id: '100000',
+          amount: 'R$ 100.000',
+          description: 'Investimento transformador em educação com IA',
+          emoji: '👑',
+          color: 'from-rose-500 to-purple-700',
+          url: 'https://buy.stripe.com/4gM6oH1RR3qh9dVaBx2sM0a'
         }
       ]
     },
@@ -186,7 +226,12 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
           '3. Scan the QR Code or paste the code',
           '4. Confirm the payment'
         ],
-        closeButton: 'Close'
+        closeButton: 'Close',
+        noteTitle: 'Leave a note (optional)',
+        namePlaceholder: 'Your name (optional)',
+        messagePlaceholder: 'Write your note here... (thanks, dedication, etc.)',
+        sendEmailButton: 'Send note by email',
+        noteInfo: 'Some banks do not transmit a message with static PIX. Send your note here and it will reach us.'
       },
       paymentOptions: [
         {
@@ -229,6 +274,38 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
           emoji: '🚀',
           color: 'from-purple-500 to-violet-600',
           url: 'https://buy.stripe.com/eVq9ATdAz2md0HpgZV2sM05'
+        },
+        {
+          id: '10000',
+          amount: 'R$ 10,000',
+          description: 'Fueling new educational initiatives',
+          emoji: '🏫',
+          color: 'from-emerald-500 to-teal-600',
+          url: 'https://buy.stripe.com/6oUaEXdAzbWNfCjaBx2sM07'
+        },
+        {
+          id: '25000',
+          amount: 'R$ 25,000',
+          description: 'Visionary sponsorship for educators',
+          emoji: '🌟',
+          color: 'from-cyan-500 to-sky-600',
+          url: 'https://buy.stripe.com/4gM14n687e4V61J3952sM08'
+        },
+        {
+          id: '50000',
+          amount: 'R$ 50,000',
+          description: 'Accelerating innovation and global impact',
+          emoji: '🌍',
+          color: 'from-indigo-500 to-blue-700',
+          url: 'https://buy.stripe.com/14AfZh1RR3qh61J2512sM09'
+        },
+        {
+          id: '100000',
+          amount: 'R$ 100,000',
+          description: 'Transformational investment in AI education',
+          emoji: '👑',
+          color: 'from-rose-500 to-purple-700',
+          url: 'https://buy.stripe.com/4gM6oH1RR3qh9dVaBx2sM0a'
         }
       ]
     }
@@ -266,6 +343,8 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
     console.log('🚀 Fechando modal PIX');
     setShowPixModal(false);
     setPixCopied(false);
+    setDonorName('');
+    setDonorMessage('');
   };
 
   // Função para copiar código PIX
@@ -277,6 +356,18 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
     } catch (err) {
       console.error('Failed to copy PIX code:', err);
     }
+  };
+
+  const sendNoteByEmail = () => {
+    const subject = language === 'en' ? 'Note with PIX donation' : 'Recado com doação via PIX';
+    const lines: string[] = [];
+    if (donorName.trim()) {
+      lines.push((language === 'en' ? 'Name: ' : 'Nome: ') + donorName.trim());
+    }
+    lines.push(language === 'en' ? 'Message:' : 'Mensagem:');
+    lines.push(donorMessage.trim());
+    const mailto = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n\n'))}`;
+    window.location.href = mailto;
   };
 
   return (
@@ -542,7 +633,7 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
             alignItems: 'flex-end',
             paddingBottom: '-5px'
           }}
-          onClick={() => setShowPixModal(false)}
+          onClick={closePixModal}
         >
           <div 
             style={{
@@ -599,9 +690,66 @@ const StripePaymentLinks: React.FC<StripePaymentLinksProps> = ({ language = 'pt'
             >
               {pixCopied ? '✅ ' + (language === 'en' ? 'Copied!' : 'Copiado!') : '📋 ' + (language === 'en' ? 'Copy PIX Code' : 'Copiar Código PIX')}
             </button>
+
+            {/* Note form */}
+            <div style={{ textAlign: 'left', marginTop: '18px' }}>
+              <h3 style={{ fontSize: '16px', margin: '0 0 8px 0', color: '#111827' }}>
+                ✍️ {t.pixModal.noteTitle}
+              </h3>
+              <input
+                type="text"
+                placeholder={t.pixModal.namePlaceholder}
+                value={donorName}
+                onChange={(e) => setDonorName(e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '10px 12px',
+                  borderRadius: '8px',
+                  border: '1px solid #d1d5db',
+                  marginBottom: '8px',
+                  fontSize: '14px'
+                }}
+              />
+              <textarea
+                placeholder={t.pixModal.messagePlaceholder}
+                value={donorMessage}
+                onChange={(e) => setDonorMessage(e.target.value)}
+                rows={4}
+                style={{
+                  width: '100%',
+                  padding: '10px 12px',
+                  borderRadius: '8px',
+                  border: '1px solid #d1d5db',
+                  marginBottom: '10px',
+                  fontSize: '14px',
+                  resize: 'vertical'
+                }}
+              />
+              <button
+                onClick={sendNoteByEmail}
+                disabled={!donorMessage.trim()}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  backgroundColor: donorMessage.trim() ? '#2563eb' : '#93c5fd',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  fontSize: '15px',
+                  cursor: donorMessage.trim() ? 'pointer' : 'not-allowed',
+                  marginBottom: '8px',
+                  fontWeight: 600 as any
+                }}
+              >
+                ✉️ {t.pixModal.sendEmailButton}
+              </button>
+              <p style={{ fontSize: '12px', color: '#6b7280', margin: 0 }}>
+                {t.pixModal.noteInfo}
+              </p>
+            </div>
             
             <button 
-              onClick={() => setShowPixModal(false)}
+              onClick={closePixModal}
               style={{
                 width: '100%',
                 padding: '15px',

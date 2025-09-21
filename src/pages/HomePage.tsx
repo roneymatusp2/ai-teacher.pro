@@ -56,6 +56,23 @@ const HomePage: React.FC = () => {
 
   return (
     <>
+      <div className="fixed top-6 right-6 z-40">
+        <motion.a
+          href="#donate"
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.96 }}
+          className="group block rounded-2xl bg-white/95 dark:bg-gray-900/95 border border-rose-200/80 dark:border-rose-500/40 shadow-xl shadow-rose-200/40 dark:shadow-rose-900/50 px-5 py-4 backdrop-blur-sm"
+        >
+          <div className="flex items-center gap-3 text-rose-600 dark:text-rose-300 font-semibold tracking-wide">
+            <span className="text-xl">❤️</span>
+            <span className="text-sm uppercase">Donate</span>
+          </div>
+          <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+            Support our mission and explore giving options.
+          </p>
+        </motion.a>
+      </div>
+
       <Hero lang='en' />
 
       {/* AI News Section */}
