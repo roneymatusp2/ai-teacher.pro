@@ -53,14 +53,14 @@ export const adminInsertNewsSource = async (sourceData: any) => {
   return data;
 };
 
-export const adminUpdateNewsSource = async (id: string, updates: Record<string, any>) => {
+export const adminUpdateNewsSource = async (id: string, updates: Partial<NewsSource>) => {
   if (!supabaseAdmin) {
     throw new Error('Admin client not initialized. Please add SUPABASE_SERVICE_ROLE_KEY to .env');
   }
   
   const { data, error } = await supabaseAdmin
     .from('news_sources')
-    .update(updates as any)
+    .update(updates)
     .eq('id', id);
     
   if (error) throw error;

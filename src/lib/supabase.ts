@@ -168,10 +168,10 @@ export const fetchNewsSources = async () => {
   return data as NewsSource[];
 };
 
-export const updateNewsSource = async (id: string, updates: Record<string, any>) => {
+export const updateNewsSource = async (id: string, updates: Partial<NewsSource>) => {
   const { data, error } = await supabase
     .from('news_sources')
-    .update(updates as any)
+    .update(updates)
     .eq('id', id)
     .select()
     .single();
