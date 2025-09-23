@@ -60,7 +60,7 @@ export const adminUpdateNewsSource = async (id: string, updates: Record<string, 
   
   const { data, error } = await supabaseAdmin
     .from('news_sources')
-    .update(updates)
+    .update(updates as any)
     .eq('id', id);
     
   if (error) throw error;
