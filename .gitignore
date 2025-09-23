@@ -67,3 +67,5 @@ temp/
 .cache/
 .vite/
 *.tsbuildinfo
+# Local Netlify folder
+.netlify

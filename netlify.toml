@@ -12,10 +12,8 @@
 
 [build.environment]
   # Environment variables for build
-  NODE_VERSION = "18.17.0"
-  NPM_FLAGS = "--force"
-
-# Headers for security and performance
+  NODE_VERSION = "18"
+  NODE_OPTIONS = "--max-old-space-size=4096"
 [[headers]]
   for = "/*"
   [headers.values]
@@ -71,29 +69,7 @@
   to = "/en/book-resources"
   status = 301
 
-# Edge Functions configuration (if needed)
-[[edge_functions]]
-  path = "/api/*"
-  function = "api"
-
-# Plugins
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
-  
-  # Plugin configuration
-  [plugins.inputs]
-    # Lighthouse performance audits
-    output_path = "reports/lighthouse.html"
-    
 # Development settings
 [dev]
   command = "npm run dev"
   port = 5173
-  targetPort = 5173
-  autoLaunch = true
-  framework = "#custom"
-
-# Functions directory (if using Netlify Functions)
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
