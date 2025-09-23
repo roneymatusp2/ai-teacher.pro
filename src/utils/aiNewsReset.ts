@@ -151,7 +151,7 @@ export const resetAINewsSystem = async () => {
     console.error('❌ FATAL ERROR during system reset:', error);
     return {
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     };
   }
 };
@@ -197,7 +197,7 @@ export const validateSystemAfterReset = async () => {
 
   } catch (error) {
     console.error('❌ Validation failed:', error);
-    return { error: error.message };
+    return { error: error instanceof Error ? error.message : String(error) };
   }
 };
 
@@ -246,6 +246,6 @@ export const emergencyCleanCorruptedData = async () => {
 
   } catch (error) {
     console.error('❌ Emergency cleanup failed:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : String(error) };
   }
 };

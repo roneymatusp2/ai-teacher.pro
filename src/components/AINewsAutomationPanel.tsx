@@ -72,7 +72,7 @@ const AINewsAutomationPanel: React.FC = () => {
         alert(`❌ Erro na inicialização: ${result.message}`);
       }
     } catch (error) {
-      alert(`❌ Erro: ${error.message}`);
+      alert(`❌ Erro: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
       setIsInitializing(false);
     }
@@ -89,7 +89,7 @@ const AINewsAutomationPanel: React.FC = () => {
         alert(`❌ ${result.message}`);
       }
     } catch (error) {
-      alert(`❌ Erro: ${error.message}`);
+      alert(`❌ Erro: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
       setIsFetching(false);
     }
@@ -106,7 +106,7 @@ const AINewsAutomationPanel: React.FC = () => {
         alert(`❌ ${result.message}`);
       }
     } catch (error) {
-      alert(`❌ Erro: ${error.message}`);
+      alert(`❌ Erro: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
       setIsProcessing(false);
     }
@@ -123,7 +123,7 @@ const AINewsAutomationPanel: React.FC = () => {
         alert(`❌ ${result.message}`);
       }
     } catch (error) {
-      alert(`❌ Erro: ${error.message}`);
+      alert(`❌ Erro: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
       setIsCleaning(false);
     }

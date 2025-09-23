@@ -73,7 +73,7 @@ export const initializeAINewsAutomation = async (): Promise<{ success: boolean; 
     console.error('❌ Erro na inicialização:', error);
     return {
       success: false,
-      message: `Erro na inicialização: ${error.message}`
+      message: `Erro na inicialização: ${error instanceof Error ? error.message : String(error)}`
     };
   }
 };
@@ -289,7 +289,7 @@ export const getAutomationStatus = async (): Promise<AutomationStatus> => {
       nextScheduledFetch: null,
       articlesInQueue: 0,
       systemHealth: 'error',
-      errors: [error.message]
+      errors: [error instanceof Error ? error.message : String(error)]
     };
   }
 };
@@ -319,7 +319,7 @@ export const triggerManualNewsFetch = async (): Promise<{ success: boolean; mess
     console.error('❌ Erro na busca manual:', error);
     return {
       success: false,
-      message: `Erro na busca: ${error.message}`
+      message: `Erro na busca: ${error instanceof Error ? error.message : String(error)}`
     };
   }
 };
@@ -349,7 +349,7 @@ export const triggerManualSummaryProcessing = async (): Promise<{ success: boole
     console.error('❌ Erro no processamento manual:', error);
     return {
       success: false,
-      message: `Erro no processamento: ${error.message}`
+      message: `Erro no processamento: ${error instanceof Error ? error.message : String(error)}`
     };
   }
 };
@@ -391,7 +391,7 @@ export const performAutomaticCleanup = async (): Promise<{ success: boolean; mes
     console.error('❌ Erro na limpeza:', error);
     return {
       success: false,
-      message: `Erro na limpeza: ${error.message}`
+      message: `Erro na limpeza: ${error instanceof Error ? error.message : String(error)}`
     };
   }
 };
@@ -440,7 +440,7 @@ export const checkSystemHealth = async (): Promise<{ healthy: boolean; issues: s
   } catch (error) {
     return {
       healthy: false,
-      issues: [`Erro na verificação: ${error.message}`]
+      issues: [`Erro na verificação: ${error instanceof Error ? error.message : String(error)}`]
     };
   }
 };
