@@ -168,7 +168,7 @@ export const fetchNewsSources = async () => {
   return data as NewsSource[];
 };
 
-export const updateNewsSource = async (id: string, updates: Partial<NewsSource>) => {
+export const updateNewsSource = async (id: string, updates: any) => {
   const { data, error } = await supabase
     .from('news_sources')
     .update(updates)
