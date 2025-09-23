@@ -27,7 +27,7 @@ export const isAdminAvailable = (): boolean => {
 };
 
 // Admin-only functions for bypassing RLS
-export const adminInsertNews = async (newsData: any) => {
+export const adminInsertNews = async (newsData: Record<string, unknown>) => {
   if (!supabaseAdmin) {
     throw new Error('Admin client not initialized. Please add SUPABASE_SERVICE_ROLE_KEY to .env');
   }
@@ -40,14 +40,14 @@ export const adminInsertNews = async (newsData: any) => {
   return data;
 };
 
-export const adminInsertNewsSource = async (sourceData: any) => {
+export const adminInsertNewsSource = async (sourceData: Omit<NewsSource, 'id' | 'created_at'>) => {
   if (!supabaseAdmin) {
     throw new Error('Admin client not initialized. Please add SUPABASE_SERVICE_ROLE_KEY to .env');
   }
   
   const { data, error } = await supabaseAdmin
     .from('news_sources')
-    .insert(sourceData);
+    .insert(sourceData as Record<string, unknown>);
     
   if (error) throw error;
   return data;
@@ -60,7 +60,7 @@ export const adminUpdateNewsSource = async (id: string, updates: Partial<NewsSou
   
   const { data, error } = await supabaseAdmin
     .from('news_sources')
-    .update(updates)
+    .update(updates as Record<string, unknown>)
     .eq('id', id);
     
   if (error) throw error;

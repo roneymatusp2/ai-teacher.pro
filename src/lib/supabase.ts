@@ -171,7 +171,7 @@ export const fetchNewsSources = async () => {
 export const updateNewsSource = async (id: string, updates: Partial<NewsSource>) => {
   const { data, error } = await supabase
     .from('news_sources')
-    .update(updates)
+    .update(updates as Record<string, unknown>)
     .eq('id', id)
     .select()
     .single();
