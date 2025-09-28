@@ -32,9 +32,9 @@ export const adminInsertNews = async (newsData: Record<string, unknown>) => {
     throw new Error('Admin client not initialized. Please add SUPABASE_SERVICE_ROLE_KEY to .env');
   }
   
-  const { data, error } = await supabaseAdmin
-    .from('ai_news')
-    .insert(newsData);
+  const { data, error } = await (supabaseAdmin
+    .from('ai_news') as any)
+    .insert(newsData as any);
     
   if (error) throw error;
   return data;
@@ -45,9 +45,9 @@ export const adminInsertNewsSource = async (sourceData: Omit<NewsSource, 'id' | 
     throw new Error('Admin client not initialized. Please add SUPABASE_SERVICE_ROLE_KEY to .env');
   }
   
-  const { data, error } = await supabaseAdmin
-    .from('news_sources')
-    .insert(sourceData as Record<string, unknown>);
+  const { data, error } = await (supabaseAdmin
+    .from('news_sources') as any)
+    .insert(sourceData as any);
     
   if (error) throw error;
   return data;
@@ -58,9 +58,9 @@ export const adminUpdateNewsSource = async (id: string, updates: Partial<NewsSou
     throw new Error('Admin client not initialized. Please add SUPABASE_SERVICE_ROLE_KEY to .env');
   }
   
-  const { data, error } = await supabaseAdmin
-    .from('news_sources')
-    .update(updates as Record<string, unknown>)
+  const { data, error } = await (supabaseAdmin
+    .from('news_sources') as any)
+    .update(updates as any)
     .eq('id', id);
     
   if (error) throw error;
