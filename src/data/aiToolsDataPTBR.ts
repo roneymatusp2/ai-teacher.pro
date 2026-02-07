@@ -414,47 +414,56 @@ export const aiToolsDataPTBR: Resource[] = [
 export const aiToolCategoriesPTBR = [
   {
     id: 'all',
-    label: 'Todas as Ferramentas de IA',
-    tools: aiToolsDataPTBR.map(t => t.id)
+    name: 'Todas as Ferramentas de IA',
+    description: 'Coleção completa de ferramentas de IA para educadores',
+    tools: aiToolsDataPTBR
   },
   {
     id: 'chat',
-    label: 'Chat e Raciocínio',
-    tools: ['chatgpt-gpt5', 'claude-opus-4-6', 'google-gemini-3-pro', 'deepseek-v3-2', 'qwen3-235b', 'xai-grok-4-2', 'mistral-large-3']
+    name: 'Chat e Raciocínio',
+    description: 'Modelos de IA conversacional para ensino e aprendizagem',
+    tools: aiToolsDataPTBR.filter(t => ['chatgpt-gpt5', 'claude-opus-4-6', 'google-gemini-3-pro', 'deepseek-v3-2', 'qwen3-235b', 'xai-grok-4-2', 'mistral-large-3'].includes(t.id))
   },
   {
     id: 'open-source',
-    label: 'Código Aberto',
-    tools: ['llama4-maverick', 'deepseek-v3-2', 'qwen3-235b', 'phi-4', 'gemma-3']
+    name: 'Código Aberto',
+    description: 'Modelos de IA gratuitos e de código aberto',
+    tools: aiToolsDataPTBR.filter(t => ['llama4-maverick', 'deepseek-v3-2', 'qwen3-235b', 'phi-4', 'gemma-3'].includes(t.id))
   },
   {
     id: 'image-video',
-    label: 'Imagem e Vídeo',
-    tools: ['midjourney-v7', 'sora']
+    name: 'Imagem e Vídeo',
+    description: 'Ferramentas de IA para criação de conteúdo visual',
+    tools: aiToolsDataPTBR.filter(t => ['midjourney-v7', 'sora'].includes(t.id))
   },
   {
     id: 'education',
-    label: 'Específicos para Educação',
-    tools: ['khan-academy-khanmigo', 'quillbot', 'notebooklm', 'gamma-ai']
+    name: 'Específicos para Educação',
+    description: 'Ferramentas de IA projetadas especificamente para educação',
+    tools: aiToolsDataPTBR.filter(t => ['khan-academy-khanmigo', 'quillbot', 'notebooklm', 'gamma-ai'].includes(t.id))
   },
   {
     id: 'coding',
-    label: 'Codificação e Desenvolvimento',
-    tools: ['github-copilot']
+    name: 'Codificação e Desenvolvimento',
+    description: 'Assistentes de codificação com IA',
+    tools: aiToolsDataPTBR.filter(t => ['github-copilot'].includes(t.id))
   },
   {
     id: 'enterprise',
-    label: 'Empresarial e RAG',
-    tools: ['amazon-nova-pro', 'ai21-jamba-large', 'cohere-command-r-plus', 'mistral-large-3']
+    name: 'Empresarial e RAG',
+    description: 'IA de nível empresarial com capacidades de recuperação',
+    tools: aiToolsDataPTBR.filter(t => ['amazon-nova-pro', 'ai21-jamba-large', 'cohere-command-r-plus', 'mistral-large-3'].includes(t.id))
   },
   {
     id: 'audio',
-    label: 'Áudio e Fala',
-    tools: ['elevenlabs']
+    name: 'Áudio e Fala',
+    description: 'Ferramentas de IA para geração de voz e áudio',
+    tools: aiToolsDataPTBR.filter(t => ['elevenlabs'].includes(t.id))
   },
   {
     id: 'research',
-    label: 'Pesquisa e Busca',
-    tools: ['perplexity-ai', 'notebooklm']
+    name: 'Pesquisa e Busca',
+    description: 'Ferramentas de pesquisa e busca com IA',
+    tools: aiToolsDataPTBR.filter(t => ['perplexity-ai', 'notebooklm'].includes(t.id))
   }
 ];
