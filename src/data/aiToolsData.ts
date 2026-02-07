@@ -1,1040 +1,478 @@
 import { Resource } from '../lib/supabase';
 
 // Comprehensive AI Tools Database from "AI Teacher Pro" Book
+// Updated: February 2026
 export const aiToolsData: Resource[] = [
   // General large-context chat / reasoning
   {
-    id: 'chatgpt-gpt4o',
+    id: 'chatgpt-gpt5',
     category: 'ai_tool',
-    title: 'ChatGPT (GPT-4o)',
-    description: 'Flagship multimodal LLM with 128k-token context and integrated image/audio tools.',
+    title: 'ChatGPT (GPT-5)',
+    description: 'OpenAI flagship model with advanced reasoning, native multimodal support, and 1M-token context. GPT-5 delivers state-of-the-art performance across coding, analysis, and creative tasks. GPT-5.3-Codex variant excels at software engineering.',
     url: 'https://chat.openai.com/',
-    tags: ['General AI', 'Multimodal', 'Large Context', 'OpenAI'],
+    tags: ['General AI', 'Multimodal', 'Large Context', 'OpenAI', 'Reasoning'],
     cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
       type: 'Conversational AI',
-      pricing: 'Free tier + Plus subscription',
-      key_features: 'Image analysis, code execution, file uploads, web browsing',
-      ai_relevance: 'Premier AI assistant for lesson planning, content creation, and student support',
-      future_potential: 'Continuous updates with new capabilities for education'
+      pricing: 'Free tier + Plus $20/mo + Pro $200/mo',
+      key_features: 'Deep reasoning, image/audio/video understanding, code execution, file uploads, web browsing, 1M context',
+      ai_relevance: 'Premier AI assistant for lesson planning, content creation, research, and student support',
+      future_potential: 'Continuous model upgrades with expanded agentic capabilities'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'claude-3-5-sonnet',
+    id: 'claude-opus-4-6',
     category: 'ai_tool',
-    title: 'Claude 3.5 Sonnet',
-    description: 'Anthropic\'s newest model; excels at deep reasoning and document analysis.',
+    title: 'Claude Opus 4.6',
+    description: 'Anthropic most capable model released 5 Feb 2026. Features agent teams for complex multi-step workflows, extended thinking for deep reasoning, and best-in-class safety. Excels at nuanced analysis, coding, and educational content.',
     url: 'https://claude.ai/',
-    tags: ['General AI', 'Reasoning', 'Document Analysis', 'Anthropic'],
+    tags: ['General AI', 'Safety', 'Reasoning', 'Anthropic', 'Education'],
     cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
       type: 'Conversational AI',
-      pricing: 'Free tier + Pro subscription',
-      key_features: 'Advanced reasoning, long context, document analysis, code generation',
-      ai_relevance: 'Excellent for complex educational content analysis and creation',
-      future_potential: 'Strong focus on safety and helpfulness for educational use'
+      pricing: 'Free tier + Pro $20/mo + Team $30/mo',
+      key_features: 'Agent teams, extended thinking, 200K context, tool use, computer use, vision, deep analysis',
+      ai_relevance: 'Excellent for curriculum development, detailed feedback, research synthesis, and safe student interactions',
+      future_potential: 'Leading agentic AI with autonomous multi-step task execution'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'google-gemini-2-5-pro',
+    id: 'google-gemini-3-pro',
     category: 'ai_tool',
-    title: 'Google Gemini 2.5 Pro',
-    description: 'Google\'s top-tier model; strong code execution and native YouTube/image grounding.',
+    title: 'Google Gemini 3 Pro',
+    description: 'Google latest Gemini 3 generation with native multimodal understanding across text, images, audio, and video. Deep integration with Google Workspace, ideal for education workflows.',
     url: 'https://gemini.google.com/',
-    tags: ['General AI', 'Code Execution', 'Google', 'Multimodal'],
+    tags: ['General AI', 'Multimodal', 'Google', 'Education', 'Workspace'],
     cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
       type: 'Conversational AI',
-      pricing: 'Free tier + Advanced subscription',
-      key_features: 'YouTube integration, real-time information, Google Workspace integration',
-      ai_relevance: 'Seamless integration with Google educational tools and services',
-      future_potential: 'Deep integration with Google for Education ecosystem'
+      pricing: 'Free tier + Google One AI Premium $19.99/mo',
+      key_features: 'Native multimodal, Google Workspace integration, 2M context, Deep Research, Gems, real-time information',
+      ai_relevance: 'Seamless integration with Google Classroom, Docs, and Slides for educators',
+      future_potential: 'Expanding agentic capabilities with Project Astra and Mariner'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'xai-grok-3',
+    id: 'llama4-maverick',
     category: 'ai_tool',
-    title: 'xAI Grok 3',
-    description: 'Real-time web-connected assistant built into X (formerly Twitter).',
-    url: 'https://x.ai/',
-    tags: ['General AI', 'Real-time', 'Web Connected', 'Social Media'],
-    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Conversational AI',
-      pricing: 'X Premium subscription required',
-      key_features: 'Real-time web access, social media integration, current events',
-      ai_relevance: 'Up-to-date information for current events and trending topics in education',
-      future_potential: 'Real-time educational content and trend analysis'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'llama-3-405b',
-    category: 'ai_tool',
-    title: 'Llama-3 (405B)',
-    description: 'Meta\'s open-weights frontier LLM for local/private hosting.',
-    url: 'https://ai.meta.com/llama/',
-    tags: ['Open Source', 'Local Hosting', 'Meta', 'Privacy'],
+    title: 'Llama 4 Maverick',
+    description: 'Meta open-source Mixture-of-Experts model with 128 experts, 10M token context window, and native multimodal capabilities. Designed for broad general tasks, deployable locally or via cloud.',
+    url: 'https://llama.meta.com/',
+    tags: ['Open Source', 'Large Context', 'Meta', 'MoE', 'Multimodal'],
     cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
       type: 'Open Source LLM',
-      pricing: 'Free (requires hosting)',
-      key_features: 'Open weights, local deployment, privacy-focused, customizable',
-      ai_relevance: 'Perfect for schools requiring data privacy and local control',
-      future_potential: 'Full institutional control and customization capabilities'
+      pricing: 'Free (open source) / API via providers',
+      key_features: '128 MoE experts, 10M context window, multimodal, multilingual, locally deployable',
+      ai_relevance: 'Ideal for schools seeking data privacy through local deployment and customization',
+      future_potential: 'Llama 4 Behemoth (2T params) coming soon for frontier-level tasks'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'deepseek-v3',
+    id: 'deepseek-v3-2',
     category: 'ai_tool',
-    title: 'DeepSeek-V3',
-    description: 'Chinese open-source model tuned for math & code.',
-    url: 'https://github.com/deepseek-ai/deepseek-llm',
-    tags: ['Open Source', 'Math', 'Coding', 'Chinese'],
+    title: 'DeepSeek-V3.2 / R2',
+    description: 'DeepSeek latest V3.2 model offers frontier-level performance at dramatically lower cost. R2 variant specializes in mathematical and scientific reasoning. V4 expected mid-February 2026.',
+    url: 'https://chat.deepseek.com/',
+    tags: ['General AI', 'Reasoning', 'Cost-Effective', 'Open Source', 'STEM'],
     cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Specialized LLM',
-      pricing: 'Free (open source)',
-      key_features: 'Mathematics excellence, coding optimization, research-focused',
-      ai_relevance: 'Specialized for STEM education and mathematical problem solving',
-      future_potential: 'Advanced mathematical reasoning for educational applications'
+      type: 'Reasoning AI',
+      pricing: 'Free tier + API pricing (very competitive)',
+      key_features: 'Advanced reasoning, math/science specialization, MoE architecture, cost-efficient, chain-of-thought',
+      ai_relevance: 'Excellent for STEM education, math tutoring, and scientific problem-solving at low cost',
+      future_potential: 'V4 release imminent with major capability improvements'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'qwen-max',
+    id: 'qwen3-235b',
     category: 'ai_tool',
-    title: 'Qwen-Max',
-    description: 'Alibaba\'s bilingual research LLM with chat & code variants.',
-    url: 'https://qwen.openkg.cn/',
-    tags: ['Bilingual', 'Research', 'Alibaba', 'Chinese'],
+    title: 'Qwen 3 (235B)',
+    description: 'Alibaba Cloud flagship 235B parameter model supporting 119 languages with hybrid thinking modes. Qwen3-Coder-Next excels at software development. Strong multilingual and reasoning capabilities.',
+    url: 'https://qwen.ai/',
+    tags: ['General AI', 'Multilingual', 'Open Source', 'Coding', 'Alibaba'],
     cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Research LLM',
-      pricing: 'Various tiers available',
-      key_features: 'Chinese-English bilingual, research capabilities, code generation',
-      ai_relevance: 'Excellent for bilingual education and international schools',
-      future_potential: 'Cross-cultural educational content and language learning'
+      type: 'Multilingual AI',
+      pricing: 'Free (open source) / API available',
+      key_features: '119 languages, hybrid thinking, 235B params, Qwen3-Coder-Next, strong reasoning',
+      ai_relevance: 'Exceptional for multilingual education and international school environments',
+      future_potential: 'Rapidly expanding ecosystem with specialized education variants'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'mistral-large',
+    id: 'phi-4',
     category: 'ai_tool',
-    title: 'Mistral Large',
-    description: 'European model with strong summarisation & function-calling.',
-    url: 'https://mistral.ai/',
-    tags: ['European', 'Summarization', 'Function Calling', 'Privacy'],
+    title: 'Microsoft Phi-4',
+    description: 'Microsoft compact 14B parameter model achieving GPT-4-class performance in math and STEM reasoning. Designed for efficiency, runs on modest hardware while delivering exceptional educational value.',
+    url: 'https://azure.microsoft.com/en-us/products/phi/',
+    tags: ['Small Model', 'STEM', 'Microsoft', 'Efficient', 'Education'],
     cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'European LLM',
-      pricing: 'API pricing available',
-      key_features: 'GDPR compliance, function calling, advanced summarization',
-      ai_relevance: 'European data sovereignty and educational compliance',
-      future_potential: 'GDPR-compliant AI solutions for European educational institutions'
+      type: 'Compact AI Model',
+      pricing: 'Free (open source) / Azure API',
+      key_features: '14B params, GPT-4-class math/STEM, efficient inference, locally deployable, strong reasoning',
+      ai_relevance: 'Perfect for resource-constrained schools needing high-quality STEM tutoring',
+      future_potential: 'Demonstrates small models can rival larger ones for specific educational tasks'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'bloom-176b',
+    id: 'gemma-3',
     category: 'ai_tool',
-    title: 'BLOOM-176B',
-    description: 'First truly multilingual open LLM (46 languages).',
-    url: 'https://huggingface.co/bigscience/bloom',
-    tags: ['Multilingual', 'Open Source', 'Hugging Face', '46 Languages'],
-    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Multilingual LLM',
-      pricing: 'Free (open source)',
-      key_features: '46 language support, open research, collaborative development',
-      ai_relevance: 'Revolutionary for multilingual and international education',
-      future_potential: 'Breaking language barriers in global education'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'falcon-180b',
-    category: 'ai_tool',
-    title: 'Falcon-180B',
-    description: 'UAE-built model optimised for low-cost inference.',
-    url: 'https://falconllm.tii.ae/',
-    tags: ['UAE', 'Cost Effective', 'Open Source', 'Inference'],
-    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Optimized LLM',
-      pricing: 'Free (open source)',
-      key_features: 'Cost-effective inference, optimized performance, open weights',
-      ai_relevance: 'Budget-friendly option for schools with limited resources',
-      future_potential: 'Democratizing AI access for educational institutions globally'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'stablelm',
-    category: 'ai_tool',
-    title: 'StableLM',
-    description: 'Text-focused sibling of Stable Diffusion for local use.',
-    url: 'https://stability.ai/blog/stablelm',
-    tags: ['Local Use', 'Stability AI', 'Open Source', 'Privacy'],
-    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Local LLM',
-      pricing: 'Free (open source)',
-      key_features: 'Local deployment, privacy-focused, lightweight, customizable',
-      ai_relevance: 'Perfect for schools requiring complete data control and privacy',
-      future_potential: 'Fully private AI solutions for sensitive educational environments'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'gemma-2',
-    category: 'ai_tool',
-    title: 'Gemma 2',
-    description: 'Lightweight licence-free Google model for edge devices.',
+    title: 'Google Gemma 3',
+    description: 'Google lightweight open model family from 1B to 27B parameters. Multimodal with 128K context, designed for on-device and edge deployment. Excellent for educational apps and local AI.',
     url: 'https://ai.google.dev/gemma',
-    tags: ['Lightweight', 'Edge Devices', 'Google', 'Licence Free'],
+    tags: ['Open Source', 'Small Model', 'Google', 'Edge AI', 'Multimodal'],
     cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Edge AI Model',
-      pricing: 'Free (licence-free)',
-      key_features: 'Edge deployment, low resource requirements, licence-free',
-      ai_relevance: 'Ideal for classrooms with limited computing resources',
-      future_potential: 'AI capabilities on any device, anywhere'
+      type: 'Open Source LLM',
+      pricing: 'Free (open source)',
+      key_features: '1B-27B range, multimodal, 128K context, on-device capable, efficient, vision support',
+      ai_relevance: 'Ideal for building privacy-preserving educational tools that run locally on school devices',
+      future_potential: 'Growing ecosystem of fine-tuned education-specific variants'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'phi-3',
+    id: 'xai-grok-4-2',
     category: 'ai_tool',
-    title: 'Phi-3',
-    description: 'Tiny-footprint model (4–14B) with near-GPT-3 performance.',
-    url: 'https://www.microsoft.com/en-us/ai/phi',
-    tags: ['Microsoft', 'Lightweight', 'Efficient', 'Small Model'],
+    title: 'xAI Grok 3 / Grok 4.2',
+    description: 'xAI latest models with Grok 4.2 releasing February 2026. Real-time X (Twitter) integration, strong reasoning, and DeepSearch. Grok 5 expected Q1 2026.',
+    url: 'https://x.ai/',
+    tags: ['General AI', 'Real-time', 'xAI', 'Social Media', 'Reasoning'],
     cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Efficient LLM',
-      pricing: 'Various licensing options',
-      key_features: 'Small footprint, high performance, efficient inference',
-      ai_relevance: 'High-quality AI for resource-constrained educational environments',
-      future_potential: 'Powerful AI capabilities without heavy infrastructure requirements'
+      type: 'Conversational AI',
+      pricing: 'X Premium+ subscription / API access',
+      key_features: 'Real-time X integration, DeepSearch, image generation, strong reasoning, humor mode',
+      ai_relevance: 'Useful for real-time current events analysis and social media literacy education',
+      future_potential: 'Grok 5 expected with massive compute scaling in Q1 2026'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'solar-10-7b',
+    id: 'mistral-large-3',
     category: 'ai_tool',
-    title: 'SOLAR 10.7B',
-    description: 'Upstage\'s dense-retriever LLM—SOTA on many open benchmarks.',
-    url: 'https://upstage.ai/solar',
-    tags: ['Upstage', 'Dense Retriever', 'Benchmarks', 'Open Source'],
+    title: 'Mistral Large 3',
+    description: 'Mistral AI flagship with 41B active parameters (675B total MoE) and 256K context. Strong multilingual and European AI leadership. Excellent for enterprise and education.',
+    url: 'https://mistral.ai/',
+    tags: ['General AI', 'European', 'Multilingual', 'Enterprise', 'MoE'],
     cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Retrieval-Augmented LLM',
-      pricing: 'Open source with commercial options',
-      key_features: 'Dense retrieval, benchmark performance, research-grade',
-      ai_relevance: 'Excellent for research-based educational projects and fact-checking',
-      future_potential: 'Advanced information retrieval for educational research'
+      type: 'Enterprise AI',
+      pricing: 'Free tier (Le Chat) + API pricing',
+      key_features: '41B active / 675B total, 256K context, strong multilingual, coding, agentic workflows',
+      ai_relevance: 'Leading European AI option with strong data sovereignty for EU schools',
+      future_potential: 'Expanding Le Chat platform with agent capabilities'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
-
-  // Coding copilots & dev agents
+  // New entries
   {
-    id: 'github-copilot',
+    id: 'amazon-nova-pro',
     category: 'ai_tool',
-    title: 'GitHub Copilot',
-    description: 'Inline code completion & chat across IDEs.',
-    url: 'https://github.com/features/copilot',
-    tags: ['Coding', 'GitHub', 'IDE Integration', 'Code Completion'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: 'Amazon Nova Pro',
+    description: 'Amazon flagship multimodal model with 300K context, up to 75% cheaper than competitors. Available through Amazon Bedrock with strong enterprise integration and compliance.',
+    url: 'https://aws.amazon.com/bedrock/nova/',
+    tags: ['General AI', 'Multimodal', 'Amazon', 'Enterprise', 'Cost-Effective'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Code Assistant',
-      pricing: 'Free for students, paid for professionals',
-      key_features: 'Code completion, chat interface, multi-language support',
-      ai_relevance: 'Essential tool for teaching programming and computer science',
-      future_potential: 'Transforming how coding is taught and learned'
+      type: 'Multimodal AI',
+      pricing: 'Pay-per-use via AWS Bedrock (75% cheaper than competitors)',
+      key_features: '300K context, multimodal (text/image/video), enterprise-grade, AWS integration, cost-effective',
+      ai_relevance: 'Cost-effective option for schools already using AWS with strong compliance features',
+      future_potential: 'Deepening AWS education ecosystem integration'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'windsurf',
+    id: 'ai21-jamba-large',
     category: 'ai_tool',
-    title: 'Windsurf (formerly Codeium)',
-    description: 'Full AI-native IDE with multi-file refactors and agents.',
-    url: 'https://windsurf.com/',
-    tags: ['IDE', 'AI Native', 'Multi-file', 'Refactoring'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: 'AI21 Jamba 1.5 Large',
+    description: 'Hybrid SSM-Transformer architecture with 94B active / 398B total parameters and 256K context. Combines efficiency of state-space models with Transformer quality.',
+    url: 'https://www.ai21.com/jamba',
+    tags: ['General AI', 'Long Context', 'Hybrid Architecture', 'AI21', 'Enterprise'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'AI-Native IDE',
-      pricing: 'Free tier with pro options',
-      key_features: 'Multi-file refactoring, AI agents, integrated development',
-      ai_relevance: 'Next-generation IDE for teaching modern software development',
-      future_potential: 'Redefining the development environment for education'
+      type: 'Hybrid AI Model',
+      pricing: 'API access with free trial',
+      key_features: 'Hybrid SSM-Transformer, 256K context, 94B/398B params, efficient long-doc processing',
+      ai_relevance: 'Excellent for processing lengthy educational materials, textbooks, and research papers',
+      future_potential: 'Novel architecture advancing the efficiency frontier for AI in education'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'cursor',
+    id: 'cohere-command-r-plus',
     category: 'ai_tool',
-    title: 'Cursor',
-    description: 'VS Code-based editor with whole-repo chat & PR review.',
-    url: 'https://www.cursor.so/',
-    tags: ['VS Code', 'Repository Chat', 'PR Review', 'Code Editor'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: 'Cohere Command R+',
+    description: 'Enterprise-focused 104B model with best-in-class RAG with inline citations. 128K context with strong multilingual support across 10+ languages.',
+    url: 'https://cohere.com/',
+    tags: ['Enterprise', 'RAG', 'Citations', 'Cohere', 'Multilingual'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'AI Code Editor',
-      pricing: 'Free tier with pro subscription',
-      key_features: 'Repository-wide understanding, PR reviews, VS Code compatibility',
-      ai_relevance: 'Advanced code editor for teaching software engineering practices',
-      future_potential: 'Comprehensive code understanding and collaborative development'
+      type: 'Enterprise RAG AI',
+      pricing: 'API access with free trial + enterprise plans',
+      key_features: '104B params, enterprise RAG with citations, 128K context, multilingual, grounded generation',
+      ai_relevance: 'Perfect for building citation-backed educational content and research tools',
+      future_potential: 'Pioneering grounded AI generation with verifiable sources'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
+  // Image generation
   {
-    id: 'replit-ai',
-    category: 'ai_tool',
-    title: 'Replit AI',
-    description: 'Cloud IDE & Ghostwriter assistant for instant deployments.',
-    url: 'https://replit.com/site/ai',
-    tags: ['Cloud IDE', 'Instant Deployment', 'Ghostwriter', 'Educational'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Cloud Development Platform',
-      pricing: 'Free tier for education',
-      key_features: 'Instant deployment, collaborative coding, educational features',
-      ai_relevance: 'Perfect for classroom coding with zero setup requirements',
-      future_potential: 'Democratizing programming education with cloud-based AI assistance'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'bolt-new',
-    category: 'ai_tool',
-    title: 'Bolt.new',
-    description: 'Chat-to-site / app generator that ships to Netlify in minutes.',
-    url: 'https://bolt.new/',
-    tags: ['No Code', 'Site Generator', 'Netlify', 'Rapid Deployment'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'No-Code Platform',
-      pricing: 'Usage-based pricing',
-      key_features: 'Natural language to website, instant deployment, no coding required',
-      ai_relevance: 'Enables non-technical educators to create educational websites instantly',
-      future_potential: 'Bridging the gap between educational ideas and digital implementation'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'create-xyz',
-    category: 'ai_tool',
-    title: 'Create.xyz',
-    description: 'No-code agent that turns natural-language specs into full-stack apps.',
-    url: 'https://www.create.xyz/',
-    tags: ['No Code', 'Full Stack', 'Natural Language', 'App Builder'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'No-Code App Builder',
-      pricing: 'Various tiers available',
-      key_features: 'Natural language specifications, full-stack generation, AI agent',
-      ai_relevance: 'Empowers educators to create custom educational applications',
-      future_potential: 'Transforming educational ideas into functional software without coding'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'tempo-labs',
-    category: 'ai_tool',
-    title: 'Tempo Labs',
-    description: 'Visual React editor that co-authors UI with AI.',
-    url: 'https://www.tempo.new/',
-    tags: ['React', 'Visual Editor', 'UI Design', 'Co-authoring'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Visual Development Tool',
-      pricing: 'Beta access available',
-      key_features: 'Visual React editing, AI co-authoring, real-time collaboration',
-      ai_relevance: 'Teaching modern web development with AI-assisted design',
-      future_potential: 'Collaborative AI for visual programming education'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'v0-vercel',
-    category: 'ai_tool',
-    title: 'v0 by Vercel',
-    description: 'Generates production-ready Next.js components from prompts.',
-    url: 'https://v0.dev/',
-    tags: ['Next.js', 'Components', 'Vercel', 'Production Ready'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Component Generator',
-      pricing: 'Usage-based pricing',
-      key_features: 'Next.js components, production-ready code, design system integration',
-      ai_relevance: 'Teaching modern web development with AI-generated components',
-      future_potential: 'Accelerating web development education and prototyping'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'codeium',
-    category: 'ai_tool',
-    title: 'Codeium',
-    description: 'Free autocomplete for 70+ languages; self-host option.',
-    url: 'https://www.codeium.com/',
-    tags: ['Autocomplete', '70+ Languages', 'Self Host', 'Free'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Code Completion Tool',
-      pricing: 'Free with enterprise options',
-      key_features: '70+ programming languages, self-hosting, privacy-focused',
-      ai_relevance: 'Comprehensive coding assistance for all programming languages taught',
-      future_potential: 'Universal coding education support with privacy options'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'junie-ai',
-    category: 'ai_tool',
-    title: 'Junie AI',
-    description: 'JetBrains agent that can navigate, run, and refactor entire projects.',
-    url: 'https://www.jetbrains.com/junie/',
-    tags: ['JetBrains', 'Project Navigation', 'Refactoring', 'IDE Agent'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'IDE AI Agent',
-      pricing: 'JetBrains licensing',
-      key_features: 'Project-wide understanding, automated refactoring, intelligent navigation',
-      ai_relevance: 'Advanced IDE capabilities for teaching software architecture',
-      future_potential: 'Comprehensive project understanding and automated code improvements'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'jules-google',
-    category: 'ai_tool',
-    title: 'Jules',
-    description: 'Google Labs beta that asynchronously fixes bugs & writes tests.',
-    url: 'https://jules.google/',
-    tags: ['Google Labs', 'Bug Fixing', 'Test Writing', 'Asynchronous'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Automated Development Tool',
-      pricing: 'Beta access (Google Labs)',
-      key_features: 'Automated bug fixing, test generation, asynchronous operation',
-      ai_relevance: 'Teaching software quality assurance and testing methodologies',
-      future_potential: 'Automated software maintenance and quality improvement'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'lovable',
-    category: 'ai_tool',
-    title: 'Lovable',
-    description: 'Community-driven AI builder for internal tools.',
-    url: 'https://lovable.dev/',
-    tags: ['Community Driven', 'Internal Tools', 'AI Builder', 'Collaborative'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Community AI Platform',
-      pricing: 'Community-based pricing',
-      key_features: 'Community-driven development, internal tool creation, collaborative AI',
-      ai_relevance: 'Building educational tools through community collaboration',
-      future_potential: 'Democratizing educational tool development through community AI'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'base44',
-    category: 'ai_tool',
-    title: 'BASE44',
-    description: '"AI as your SaaS factory" – databases, auth, email baked in.',
-    url: 'https://base44.com/',
-    tags: ['SaaS Factory', 'Database', 'Authentication', 'All-in-One'],
-    cover_url: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Complete SaaS Platform',
-      pricing: 'Subscription-based',
-      key_features: 'Integrated databases, authentication, email services, AI-powered',
-      ai_relevance: 'Complete platform for building educational SaaS applications',
-      future_potential: 'Full-stack educational platform development with AI assistance'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-
-  // Creative media generation
-  {
-    id: 'dalle-3',
-    category: 'ai_tool',
-    title: 'DALL·E 3',
-    description: 'Text-to-image (now integrated in ChatGPT).',
-    url: 'https://labs.openai.com/',
-    tags: ['Image Generation', 'Text-to-Image', 'OpenAI', 'Creative'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Image Generation AI',
-      pricing: 'Integrated with ChatGPT Plus',
-      key_features: 'High-quality image generation, text integration, educational illustrations',
-      ai_relevance: 'Creating custom educational visuals, illustrations, and learning materials',
-      future_potential: 'Revolutionizing visual content creation for education'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'midjourney',
+    id: 'midjourney-v7',
     category: 'ai_tool',
     title: 'Midjourney',
-    description: 'Discord-based art generator famed for photographic realism.',
+    description: 'Leading AI image generation producing stunning visuals from text. Widely used for educational content creation, illustration, and visual learning materials.',
     url: 'https://www.midjourney.com/',
-    tags: ['Art Generation', 'Photorealistic', 'Discord', 'Creative'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
+    tags: ['Image Generation', 'Creative', 'Art', 'Visual Learning'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Art Generation Platform',
-      pricing: 'Subscription-based',
-      key_features: 'Photorealistic images, artistic styles, community-driven',
-      ai_relevance: 'Creating stunning visual content for presentations and educational materials',
-      future_potential: 'Professional-quality educational artwork and visual storytelling'
+      type: 'Image Generation',
+      pricing: 'From $10/mo (Basic) to $120/mo (Mega)',
+      key_features: 'Photorealistic images, artistic styles, text prompts, variation control, upscaling',
+      ai_relevance: 'Creating educational illustrations, visual aids, and engaging learning materials',
+      future_potential: 'Expanding into video and 3D generation'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'stable-diffusion-xl',
+    id: 'dall-e-3',
     category: 'ai_tool',
-    title: 'Stable Diffusion XL',
-    description: 'Open-weights diffusion model for local or API image creation.',
-    url: 'https://stability.ai/',
-    tags: ['Open Source', 'Local Generation', 'API', 'Stable Diffusion'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: 'DALL-E 3',
+    description: 'OpenAI image generation integrated into ChatGPT. Excels at following complex text prompts and generating educational diagrams and illustrations.',
+    url: 'https://openai.com/dall-e-3',
+    tags: ['Image Generation', 'OpenAI', 'Creative', 'Education'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Open Source Image AI',
-      pricing: 'Free (open source) + API options',
-      key_features: 'Local deployment, open weights, customizable, privacy-focused',
-      ai_relevance: 'Complete control over image generation for educational institutions',
-      future_potential: 'Private, customizable image generation for sensitive educational content'
+      type: 'Image Generation',
+      pricing: 'Included in ChatGPT Plus / API access',
+      key_features: 'Precise prompt following, text rendering, ChatGPT integration, educational diagrams',
+      ai_relevance: 'Generate custom educational visuals, diagrams, and illustrations for any subject',
+      future_potential: 'Improving text rendering and educational diagram capabilities'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
-  {
-    id: 'leonardo-ai',
-    category: 'ai_tool',
-    title: 'Leonardo AI',
-    description: 'Fine-tune-ready SD pipeline with 4k graphics & asset variants.',
-    url: 'https://leonardo.ai/',
-    tags: ['Fine Tuning', '4K Graphics', 'Asset Variants', 'Professional'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Professional Image Platform',
-      pricing: 'Freemium with pro tiers',
-      key_features: 'Fine-tuning capabilities, 4K resolution, asset management',
-      ai_relevance: 'Professional-grade educational content creation and asset development',
-      future_potential: 'Custom educational visual styles and branded content creation'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'ideogram',
-    category: 'ai_tool',
-    title: 'Ideogram',
-    description: 'Excels at text-within-image posters and typography.',
-    url: 'https://ideogram.ai/',
-    tags: ['Typography', 'Text in Images', 'Posters', 'Educational Graphics'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Typography-Focused AI',
-      pricing: 'Freemium model',
-      key_features: 'Text integration, poster creation, typography excellence',
-      ai_relevance: 'Perfect for creating educational posters, infographics, and text-based visuals',
-      future_potential: 'Advanced educational poster and infographic creation'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'adobe-firefly',
-    category: 'ai_tool',
-    title: 'Adobe Firefly',
-    description: 'Commercially safe images + vector recolour in Adobe CC apps.',
-    url: 'https://firefly.adobe.com/',
-    tags: ['Adobe', 'Commercial Safe', 'Vector Graphics', 'Creative Cloud'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Enterprise Creative AI',
-      pricing: 'Adobe Creative Cloud subscription',
-      key_features: 'Commercial licensing, Creative Cloud integration, vector capabilities',
-      ai_relevance: 'Safe commercial use for educational institutions and professional content',
-      future_potential: 'Professional educational content creation with legal safety'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'canva-magic',
-    category: 'ai_tool',
-    title: 'Canva Magic',
-    description: 'One-click presentations, image & social assets inside Canva.',
-    url: 'https://www.canva.com/magic/',
-    tags: ['Presentations', 'Social Media', 'Templates', 'Easy to Use'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Design Automation Platform',
-      pricing: 'Freemium with Canva Pro',
-      key_features: 'One-click design, presentation creation, social media assets',
-      ai_relevance: 'Instant professional presentations and educational materials',
-      future_potential: 'Democratizing professional design for all educators'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'unity-muse',
-    category: 'ai_tool',
-    title: 'Unity Muse',
-    description: 'Generates textures, behaviours & scaffolded C# for game dev.',
-    url: 'https://unity.com/products/unity-muse',
-    tags: ['Game Development', 'Unity', 'Textures', 'C# Programming'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Game Development AI',
-      pricing: 'Unity subscription tiers',
-      key_features: 'Texture generation, behavior scripting, C# code scaffolding',
-      ai_relevance: 'Teaching game development and interactive educational experiences',
-      future_potential: 'AI-assisted educational game creation and interactive learning'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'runway-ml',
-    category: 'ai_tool',
-    title: 'Runway ML',
-    description: 'Gen-2 text-to-video & green-screen removal for editors.',
-    url: 'https://runwayml.com/',
-    tags: ['Video Generation', 'Text-to-Video', 'Green Screen', 'Video Editing'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Video Generation Platform',
-      pricing: 'Credits-based system',
-      key_features: 'Text-to-video generation, video editing tools, green screen removal',
-      ai_relevance: 'Creating educational videos and interactive visual content',
-      future_potential: 'Revolutionary video content creation for online education'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'synthesia',
-    category: 'ai_tool',
-    title: 'Synthesia',
-    description: 'Studio-quality talking-head videos in 120+ languages.',
-    url: 'https://www.synthesia.io/',
-    tags: ['Talking Head Videos', 'Multilingual', 'Studio Quality', 'AI Presenter'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'AI Video Platform',
-      pricing: 'Subscription-based',
-      key_features: '120+ languages, realistic avatars, studio-quality production',
-      ai_relevance: 'Creating multilingual educational content with AI presenters',
-      future_potential: 'Scalable multilingual education delivery with AI instructors'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
+  // Audio / Speech
   {
     id: 'elevenlabs',
     category: 'ai_tool',
     title: 'ElevenLabs',
-    description: 'Near-human multilingual TTS and voice-cloning.',
+    description: 'Leading AI voice synthesis with ultra-realistic text-to-speech in 29+ languages. Ideal for audiobooks, narrated lessons, and accessible educational content.',
     url: 'https://elevenlabs.io/',
-    tags: ['Text-to-Speech', 'Voice Cloning', 'Multilingual', 'Audio'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
+    tags: ['Audio', 'Text-to-Speech', 'Accessibility', 'Languages'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Voice AI Platform',
-      pricing: 'Usage-based pricing',
-      key_features: 'Realistic TTS, voice cloning, multilingual support',
-      ai_relevance: 'Creating audio content, audiobooks, and accessible educational materials',
-      future_potential: 'Personalized audio education and accessibility solutions'
+      type: 'Voice AI',
+      pricing: 'Free tier + From $5/mo',
+      key_features: 'Ultra-realistic voices, 29+ languages, voice cloning, audio translation, real-time streaming',
+      ai_relevance: 'Making educational content accessible through high-quality narration and multilingual support',
+      future_potential: 'Real-time conversation AI and expanded language support'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
+  // Coding assistants
   {
-    id: 'google-veo-3',
+    id: 'github-copilot',
     category: 'ai_tool',
-    title: 'Google Veo 3',
-    description: 'Next-gen text-to-video; 1080p, 1-min clips with audio.',
-    url: 'https://deepmind.google/technologies/video-generation/veo',
-    tags: ['Google', 'Text-to-Video', '1080p', 'Audio Generation'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: 'GitHub Copilot',
+    description: 'AI coding assistant integrated into popular IDEs. Uses GPT-5 and Claude models for intelligent code suggestions, documentation generation, and debugging assistance.',
+    url: 'https://github.com/features/copilot',
+    tags: ['Coding', 'GitHub', 'IDE', 'Education', 'Developer Tools'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Advanced Video AI',
-      pricing: 'Google Cloud pricing',
-      key_features: 'High-definition video, audio generation, extended duration',
-      ai_relevance: 'Creating high-quality educational videos with synchronized audio',
-      future_potential: 'Professional educational video production with AI'
+      type: 'Coding Assistant',
+      pricing: 'Free for students + $10/mo Individual + $19/mo Business',
+      key_features: 'Multi-model (GPT-5, Claude), inline suggestions, chat, CLI, multi-file editing, workspace agent',
+      ai_relevance: 'Free for students, teaching coding concepts, and accelerating CS education projects',
+      future_potential: 'Expanding agentic coding with autonomous task completion'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
+  // Video generation
   {
-    id: 'hailuo-ai',
+    id: 'sora',
     category: 'ai_tool',
-    title: 'Hailuo AI',
-    description: '6-second looping micro-videos perfect for "lesson hooks."',
-    url: 'https://hailuoai.video/',
-    tags: ['Micro Videos', 'Lesson Hooks', 'Looping', 'Short Content'],
-    cover_url: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: 'OpenAI Sora',
+    description: 'OpenAI text-to-video model creating realistic videos from text. Revolutionary for educational video content, simulations, and visual explanations.',
+    url: 'https://openai.com/sora',
+    tags: ['Video Generation', 'OpenAI', 'Creative', 'Education'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Micro-Video Platform',
-      pricing: 'Usage-based',
-      key_features: 'Short video generation, looping content, lesson engagement',
-      ai_relevance: 'Creating engaging video hooks and attention-grabbing educational content',
-      future_potential: 'Micro-learning content and attention-capture tools for education'
+      type: 'Video Generation',
+      pricing: 'Included in ChatGPT Pro / API access',
+      key_features: 'Text-to-video, realistic motion, scene understanding, up to 1 minute videos',
+      ai_relevance: 'Creating engaging educational videos, historical recreations, and science visualizations',
+      future_potential: 'Longer videos, better consistency, and interactive educational content'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
-
-  // Scholarly research & data wrangling
+  // Research and search
   {
     id: 'perplexity-ai',
     category: 'ai_tool',
     title: 'Perplexity AI',
-    description: 'Conversational search that cites every source.',
+    description: 'AI search engine providing sourced, cited answers. Ideal for research, fact-checking, and academic inquiry with real-time web access.',
     url: 'https://www.perplexity.ai/',
-    tags: ['Research', 'Conversational Search', 'Citations', 'Academic'],
-    cover_url: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400',
+    tags: ['Search', 'Research', 'Citations', 'Education', 'Real-time'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Research AI Platform',
-      pricing: 'Freemium with Pro subscription',
-      key_features: 'Source citations, real-time search, academic research support',
-      ai_relevance: 'Essential tool for academic research and fact-checking in education',
-      future_potential: 'Transforming how research is conducted and verified in educational settings'
+      type: 'AI Search',
+      pricing: 'Free tier + Pro $20/mo',
+      key_features: 'Cited answers, real-time web search, academic focus, follow-up questions, collections',
+      ai_relevance: 'Teaching research skills and providing cited, verifiable information for academic work',
+      future_potential: 'Expanding into collaborative research and deeper academic integration'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
+  },
+  // Presentation and productivity
+  {
+    id: 'gamma-ai',
+    category: 'ai_tool',
+    title: 'Gamma AI',
+    description: 'AI presentation and document creator generating professional slides, documents, and webpages from prompts. Perfect for teachers creating lesson materials quickly.',
+    url: 'https://gamma.app/',
+    tags: ['Presentations', 'Productivity', 'Education', 'Design'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
+    provider_meta: {
+      type: 'Presentation AI',
+      pricing: 'Free tier + Plus $8/mo + Pro $15/mo',
+      key_features: 'AI presentations, documents, webpages, custom themes, analytics, collaboration',
+      ai_relevance: 'Rapidly creating professional lesson presentations and educational materials',
+      future_potential: 'Deeper AI integration for adaptive educational content'
+    },
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
+  },
+  // Education-specific
+  {
+    id: 'khan-academy-khanmigo',
+    category: 'ai_tool',
+    title: 'Khanmigo (Khan Academy)',
+    description: 'AI tutoring assistant for Khan Academy. Personalized tutoring, Socratic questioning, and adaptive learning paths across math, science, and more.',
+    url: 'https://www.khanacademy.org/khan-labs',
+    tags: ['Education', 'Tutoring', 'Adaptive Learning', 'K-12', 'Math'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
+    provider_meta: {
+      type: 'AI Tutor',
+      pricing: 'Free for teachers / $44/year for learners',
+      key_features: 'Socratic tutoring, step-by-step guidance, progress tracking, teacher dashboard, safe for students',
+      ai_relevance: 'Purpose-built AI tutor with pedagogical best practices and student safety built in',
+      future_potential: 'Expanding subjects and deeper personalization'
+    },
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
-    id: 'consensus',
+    id: 'quillbot',
     category: 'ai_tool',
-    title: 'Consensus',
-    description: 'Extracts evidence sentences from 200M+ academic papers.',
-    url: 'https://consensus.app/',
-    tags: ['Academic Papers', 'Evidence Extraction', 'Research', 'Scientific'],
-    cover_url: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: 'QuillBot',
+    description: 'AI writing assistant offering paraphrasing, grammar checking, summarization, and citation generation. Widely used in education for improving student writing skills.',
+    url: 'https://quillbot.com/',
+    tags: ['Writing', 'Grammar', 'Paraphrasing', 'Education', 'Academic'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'Academic Research Tool',
-      pricing: 'Freemium model',
-      key_features: 'Evidence extraction, 200M+ papers, scientific consensus',
-      ai_relevance: 'Critical for evidence-based teaching and academic research',
-      future_potential: 'Revolutionizing literature reviews and evidence synthesis'
+      type: 'Writing Assistant',
+      pricing: 'Free tier + Premium $9.95/mo',
+      key_features: 'Paraphraser, grammar checker, summarizer, citation generator, plagiarism checker',
+      ai_relevance: 'Helping students improve writing quality while maintaining academic integrity',
+      future_potential: 'AI-powered writing coaching and feedback'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'elicit',
-    category: 'ai_tool',
-    title: 'Elicit',
-    description: 'Systematic-review assistant that builds literature matrices.',
-    url: 'https://elicit.org/',
-    tags: ['Systematic Review', 'Literature Matrix', 'Research Assistant', 'Academic'],
-    cover_url: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Research Assistant AI',
-      pricing: 'Free for researchers',
-      key_features: 'Literature matrices, systematic reviews, research workflow automation',
-      ai_relevance: 'Streamlining academic research processes for educators and students',
-      future_potential: 'Automated research methodology and literature analysis'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'scispace',
-    category: 'ai_tool',
-    title: 'SciSpace',
-    description: 'Plain-language explainer and PDF AI reader.',
-    url: 'https://typeset.io/scispace',
-    tags: ['Plain Language', 'PDF Reader', 'Research Explainer', 'Academic'],
-    cover_url: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Academic Reading Assistant',
-      pricing: 'Freemium with premium features',
-      key_features: 'Plain-language explanations, PDF analysis, research comprehension',
-      ai_relevance: 'Making complex research accessible to students and educators',
-      future_potential: 'Democratizing access to academic knowledge through AI explanation'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   },
   {
     id: 'notebooklm',
     category: 'ai_tool',
-    title: 'NotebookLM',
-    description: 'AI research notebook with source-anchored answers.',
-    url: 'https://notebooklm.google/',
-    tags: ['Research Notebook', 'Source Anchored', 'Google', 'Academic'],
-    cover_url: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: 'Google NotebookLM',
+    description: 'Google AI research and note-taking tool generating insights from uploaded documents. Creates audio overviews, study guides, and Q&A from source materials.',
+    url: 'https://notebooklm.google.com/',
+    tags: ['Research', 'Notes', 'Google', 'Education', 'Study'],
+    cover_url: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400',
     provider_meta: {
-      type: 'AI Research Notebook',
-      pricing: 'Free (Google Labs)',
-      key_features: 'Source attribution, research organization, AI-powered insights',
-      ai_relevance: 'Organizing and synthesizing research for educational projects',
-      future_potential: 'Next-generation research methodology and knowledge management'
+      type: 'Research AI',
+      pricing: 'Free with Google account',
+      key_features: 'Document analysis, audio overviews, study guides, Q&A generation, source-grounded',
+      ai_relevance: 'Transform course materials into interactive study resources and audio content',
+      future_potential: 'Expanding source types and collaborative features'
     },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'wolfram-alpha',
-    category: 'ai_tool',
-    title: 'Wolfram Alpha',
-    description: 'Symbolic computing & curated data for maths, science, finance.',
-    url: 'https://www.wolframalpha.com/',
-    tags: ['Mathematics', 'Science', 'Symbolic Computing', 'Educational'],
-    cover_url: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Computational Knowledge Engine',
-      pricing: 'Free with Pro subscription',
-      key_features: 'Mathematical computation, scientific data, step-by-step solutions',
-      ai_relevance: 'Essential for STEM education and mathematical problem-solving',
-      future_potential: 'Advanced computational education and mathematical literacy'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'ibm-watson-x',
-    category: 'ai_tool',
-    title: 'IBM Watson x',
-    description: 'Enterprise NLP, speech & AutoAI pipelines.',
-    url: 'https://www.ibm.com/watson',
-    tags: ['Enterprise', 'NLP', 'Speech Processing', 'IBM'],
-    cover_url: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Enterprise AI Platform',
-      pricing: 'Enterprise licensing',
-      key_features: 'Natural language processing, speech recognition, automated AI pipelines',
-      ai_relevance: 'Enterprise-grade AI solutions for large educational institutions',
-      future_potential: 'Scalable AI infrastructure for educational organizations'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'oracle-ai',
-    category: 'ai_tool',
-    title: 'Oracle AI',
-    description: 'OCI Language & Vision APIs with data-sovereignty options.',
-    url: 'https://www.oracle.com/artificial-intelligence/',
-    tags: ['Oracle', 'Data Sovereignty', 'Language Processing', 'Vision AI'],
-    cover_url: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Enterprise Cloud AI',
-      pricing: 'Cloud-based pricing',
-      key_features: 'Data sovereignty, language APIs, vision processing, enterprise security',
-      ai_relevance: 'Secure AI solutions for institutions with strict data requirements',
-      future_potential: 'Sovereign AI capabilities for sensitive educational environments'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'claude-scholar',
-    category: 'ai_tool',
-    title: 'Claude Scholar',
-    description: 'Anthropic vertical tuned for academic papers.',
-    url: 'https://claude.ai/',
-    tags: ['Academic Papers', 'Anthropic', 'Scholarly Research', 'Specialized'],
-    cover_url: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Academic AI Assistant',
-      pricing: 'Professional subscription',
-      key_features: 'Academic paper analysis, scholarly writing, research assistance',
-      ai_relevance: 'Specialized AI for academic research and scholarly communication',
-      future_potential: 'Advanced academic AI tailored for educational research needs'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-
-  // Education-first platforms
-  {
-    id: 'magicschool-ai',
-    category: 'ai_tool',
-    title: 'MagicSchool AI',
-    description: 'Built by teachers for teachers, bundles 60+ prompt workflows and student-safe data policies.',
-    url: 'https://www.magicschool.ai/',
-    tags: ['Education First', 'Teacher Built', 'Student Safe', 'Workflow Tools'],
-    cover_url: 'https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Education-Focused AI Platform',
-      pricing: 'Free for educators',
-      key_features: '60+ educational workflows, student data protection, teacher-designed',
-      ai_relevance: 'Purpose-built for education with comprehensive teaching tools',
-      future_potential: 'Setting the standard for education-first AI platforms'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'google-gemini-education',
-    category: 'ai_tool',
-    title: 'Google Gemini for Education',
-    description: '1000 uses/mo, Meet NoteTaker, privacy-guarded.',
-    url: 'https://workspace.google.com/gemini',
-    tags: ['Google Education', 'Privacy Guarded', 'Meeting Notes', 'Workspace'],
-    cover_url: 'https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Educational AI Suite',
-      pricing: 'Free tier for education',
-      key_features: 'Google Workspace integration, privacy protection, meeting transcription',
-      ai_relevance: 'Seamlessly integrated AI for Google for Education users',
-      future_potential: 'Comprehensive AI ecosystem for educational institutions'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'google-ai-studio',
-    category: 'ai_tool',
-    title: 'Google AI Studio',
-    description: 'Param-tuning playground demonstrated in the book for lesson planning.',
-    url: 'https://aistudio.google.com/',
-    tags: ['Parameter Tuning', 'Lesson Planning', 'Google', 'AI Playground'],
-    cover_url: 'https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'AI Development Platform',
-      pricing: 'Free with usage limits',
-      key_features: 'Model customization, parameter tuning, educational experimentation',
-      ai_relevance: 'Teaching AI concepts and customizing models for educational use',
-      future_potential: 'Empowering educators to create custom AI solutions'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'moodle-ai',
-    category: 'ai_tool',
-    title: 'Moodle with Moodle AI',
-    description: 'Open-source LMS now shipping gen-AI assisted grading and Q-bank auto-creation.',
-    url: 'https://moodle.org/',
-    tags: ['LMS', 'Open Source', 'Auto Grading', 'Question Banks'],
-    cover_url: 'https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'AI-Enhanced LMS',
-      pricing: 'Open source with hosting options',
-      key_features: 'Automated grading, question generation, learning analytics',
-      ai_relevance: 'Comprehensive LMS with built-in AI capabilities for course management',
-      future_potential: 'The future of intelligent learning management systems'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
-  },
-  {
-    id: 'qgis-geoai',
-    category: 'ai_tool',
-    title: 'QGIS + GeoAI',
-    description: 'Adds spatial ML plugins for environmental or geography projects.',
-    url: 'https://www.qgis.org/',
-    tags: ['GIS', 'Spatial Analysis', 'Geography', 'Environmental'],
-    cover_url: 'https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=400',
-    provider_meta: {
-      type: 'Geographic AI Platform',
-      pricing: 'Free and open source',
-      key_features: 'Spatial analysis, machine learning plugins, geographic data processing',
-      ai_relevance: 'Advanced geographic and environmental education with AI-powered analysis',
-      future_potential: 'Combining AI with geographic education for environmental understanding'
-    },
-    created_at: '2024-06-25T10:00:00Z',
-    updated_at: '2024-06-25T10:00:00Z'
+    created_at: '2026-02-07T10:00:00Z',
+    updated_at: '2026-02-07T10:00:00Z'
   }
 ];
 
-// Categories for organization
+// AI Tool Categories for filtering
 export const aiToolCategories = [
   {
-    id: 'general-ai',
-    name: 'General Large-Context Chat & Reasoning',
-    description: 'Flagship AI assistants for conversations, analysis, and complex reasoning tasks.',
-    icon: '🤖',
-    tools: aiToolsData.filter(tool => 
-      ['chatgpt-gpt4o', 'claude-3-5-sonnet', 'google-gemini-2-5-pro', 'xai-grok-3', 
-       'llama-3-405b', 'deepseek-v3', 'qwen-max', 'mistral-large', 'bloom-176b', 
-       'falcon-180b', 'stablelm', 'gemma-2', 'phi-3', 'solar-10-7b'].includes(tool.id)
-    )
+    id: 'all',
+    label: 'All AI Tools',
+    tools: aiToolsData.map(t => t.id)
   },
   {
-    id: 'coding-tools',
-    name: 'Coding Copilots & Dev Agents',
-    description: 'AI-powered development tools for programming, debugging, and software creation.',
-    icon: '💻',
-    tools: aiToolsData.filter(tool => 
-      ['github-copilot', 'windsurf', 'cursor', 'replit-ai', 'bolt-new', 'create-xyz', 
-       'tempo-labs', 'v0-vercel', 'codeium', 'junie-ai', 'jules-google', 'lovable', 'base44'].includes(tool.id)
-    )
+    id: 'chat',
+    label: 'Chat & Reasoning',
+    tools: ['chatgpt-gpt5', 'claude-opus-4-6', 'google-gemini-3-pro', 'deepseek-v3-2', 'qwen3-235b', 'xai-grok-4-2', 'mistral-large-3']
   },
   {
-    id: 'creative-media',
-    name: 'Creative Media Generation',
-    description: 'AI tools for creating images, videos, audio, and multimedia educational content.',
-    icon: '🎨',
-    tools: aiToolsData.filter(tool => 
-      ['dalle-3', 'midjourney', 'stable-diffusion-xl', 'leonardo-ai', 'ideogram', 'adobe-firefly', 
-       'canva-magic', 'unity-muse', 'runway-ml', 'synthesia', 'elevenlabs', 'google-veo-3', 'hailuo-ai'].includes(tool.id)
-    )
+    id: 'open-source',
+    label: 'Open Source',
+    tools: ['llama4-maverick', 'deepseek-v3-2', 'qwen3-235b', 'phi-4', 'gemma-3']
   },
   {
-    id: 'research-tools',
-    name: 'Scholarly Research & Data Wrangling',
-    description: 'AI-powered research tools for academic work, literature reviews, and data analysis.',
-    icon: '📊',
-    tools: aiToolsData.filter(tool => 
-      ['perplexity-ai', 'consensus', 'elicit', 'scispace', 'notebooklm', 'wolfram-alpha', 
-       'ibm-watson-x', 'oracle-ai', 'claude-scholar'].includes(tool.id)
-    )
+    id: 'image-video',
+    label: 'Image & Video',
+    tools: ['midjourney-v7', 'dall-e-3', 'sora']
   },
   {
-    id: 'education-first',
-    name: 'Education-First Platforms',
-    description: 'AI platforms specifically designed for educational institutions and teachers.',
-    icon: '🎓',
-    tools: aiToolsData.filter(tool => 
-      ['magicschool-ai', 'google-gemini-education', 'google-ai-studio', 'moodle-ai', 'qgis-geoai'].includes(tool.id)
-    )
+    id: 'education',
+    label: 'Education Specific',
+    tools: ['khan-academy-khanmigo', 'quillbot', 'notebooklm', 'gamma-ai']
+  },
+  {
+    id: 'coding',
+    label: 'Coding & Development',
+    tools: ['github-copilot']
+  },
+  {
+    id: 'enterprise',
+    label: 'Enterprise & RAG',
+    tools: ['amazon-nova-pro', 'ai21-jamba-large', 'cohere-command-r-plus', 'mistral-large-3']
+  },
+  {
+    id: 'audio',
+    label: 'Audio & Speech',
+    tools: ['elevenlabs']
+  },
+  {
+    id: 'research',
+    label: 'Research & Search',
+    tools: ['perplexity-ai', 'notebooklm']
   }
 ];
