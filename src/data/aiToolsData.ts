@@ -432,47 +432,56 @@ export const aiToolsData: Resource[] = [
 export const aiToolCategories = [
   {
     id: 'all',
-    label: 'All AI Tools',
-    tools: aiToolsData.map(t => t.id)
+    name: 'All AI Tools',
+    description: 'Complete collection of AI tools for educators',
+    tools: aiToolsData
   },
   {
     id: 'chat',
-    label: 'Chat & Reasoning',
-    tools: ['chatgpt-gpt5', 'claude-opus-4-6', 'google-gemini-3-pro', 'deepseek-v3-2', 'qwen3-235b', 'xai-grok-4-2', 'mistral-large-3']
+    name: 'Chat & Reasoning',
+    description: 'Conversational AI models for teaching and learning',
+    tools: aiToolsData.filter(t => ['chatgpt-gpt5', 'claude-opus-4-6', 'google-gemini-3-pro', 'deepseek-v3-2', 'qwen3-235b', 'xai-grok-4-2', 'mistral-large-3'].includes(t.id))
   },
   {
     id: 'open-source',
-    label: 'Open Source',
-    tools: ['llama4-maverick', 'deepseek-v3-2', 'qwen3-235b', 'phi-4', 'gemma-3']
+    name: 'Open Source',
+    description: 'Free and open-source AI models',
+    tools: aiToolsData.filter(t => ['llama4-maverick', 'deepseek-v3-2', 'qwen3-235b', 'phi-4', 'gemma-3'].includes(t.id))
   },
   {
     id: 'image-video',
-    label: 'Image & Video',
-    tools: ['midjourney-v7', 'dall-e-3', 'sora']
+    name: 'Image & Video',
+    description: 'AI tools for visual content creation',
+    tools: aiToolsData.filter(t => ['midjourney-v7', 'dall-e-3', 'sora'].includes(t.id))
   },
   {
     id: 'education',
-    label: 'Education Specific',
-    tools: ['khan-academy-khanmigo', 'quillbot', 'notebooklm', 'gamma-ai']
+    name: 'Education Specific',
+    description: 'AI tools designed specifically for education',
+    tools: aiToolsData.filter(t => ['khan-academy-khanmigo', 'quillbot', 'notebooklm', 'gamma-ai'].includes(t.id))
   },
   {
     id: 'coding',
-    label: 'Coding & Development',
-    tools: ['github-copilot']
+    name: 'Coding & Development',
+    description: 'AI-powered coding assistants',
+    tools: aiToolsData.filter(t => ['github-copilot'].includes(t.id))
   },
   {
     id: 'enterprise',
-    label: 'Enterprise & RAG',
-    tools: ['amazon-nova-pro', 'ai21-jamba-large', 'cohere-command-r-plus', 'mistral-large-3']
+    name: 'Enterprise & RAG',
+    description: 'Enterprise-grade AI with retrieval capabilities',
+    tools: aiToolsData.filter(t => ['amazon-nova-pro', 'ai21-jamba-large', 'cohere-command-r-plus', 'mistral-large-3'].includes(t.id))
   },
   {
     id: 'audio',
-    label: 'Audio & Speech',
-    tools: ['elevenlabs']
+    name: 'Audio & Speech',
+    description: 'AI tools for voice and audio generation',
+    tools: aiToolsData.filter(t => ['elevenlabs'].includes(t.id))
   },
   {
     id: 'research',
-    label: 'Research & Search',
-    tools: ['perplexity-ai', 'notebooklm']
+    name: 'Research & Search',
+    description: 'AI-powered research and search tools',
+    tools: aiToolsData.filter(t => ['perplexity-ai', 'notebooklm'].includes(t.id))
   }
 ];
