@@ -7,8 +7,8 @@ const AUTOMATION_CONFIG = {
   SUMMARY_DELAY_MINUTES: 15,
   MAX_ARTICLES_PER_BATCH: 10,
   CLEANUP_DAYS: 30,
-  PROJECT_ID: 'gjvtncdjcslnkfctqnfy',
-  SUPABASE_URL: 'https://gjvtncdjcslnkfctqnfy.supabase.co'
+  PROJECT_ID: 'rawjndykfabmbgjdtznk',
+  SUPABASE_URL: 'https://rawjndykfabmbgjdtznk.supabase.co'
 };
 
 export interface AutomationStatus {
@@ -236,7 +236,7 @@ export const getAutomationStatus = async (): Promise<AutomationStatus> => {
     const { data: lastSummary } = await supabase
       .from('pipeline_logs')
       .select('created_at')
-      .eq('operation', 'process_summaries_openai_first')
+            .eq('operation', 'process_summaries_vertex_ai')
       .eq('status', 'completed')
       .order('created_at', { ascending: false })
       .limit(1)
@@ -493,4 +493,5 @@ export const startRealtimeMonitoring = () => {
 };
 
 // Exportar configurações
+
 export { AUTOMATION_CONFIG }; 
