@@ -1,0 +1,2 @@
+# Preserve the deployed files byte for byte on every operating system.
+/public/** -text

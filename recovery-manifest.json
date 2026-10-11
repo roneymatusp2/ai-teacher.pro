@@ -1,0 +1,504 @@
+{
+  "source": "https://ai-teachers.pro/",
+  "firebaseProject": "aiteacherpro-386e1",
+  "firebaseVersion": "sites/aiteacherpro-386e1/versions/a622296626d620dc",
+  "releaseTime": "2026-06-30T18:03:07.434Z",
+  "hostingConfig": {
+    "headers": [
+      {
+        "headers": {
+          "Cache-Control": "public, max-age=31536000, immutable"
+        },
+        "glob": "**/*.@(js|css|svg|png|jpg|jpeg|gif|ico|woff|woff2)"
+      },
+      {
+        "headers": {
+          "Cache-Control": "public, max-age=604800"
+        },
+        "glob": "**/*.@(mp4|webm)"
+      },
+      {
+        "headers": {
+          "Cache-Control": "no-cache, no-store, must-revalidate"
+        },
+        "glob": "index.html"
+      }
+    ],
+    "rewrites": [
+      {
+        "glob": "**",
+        "path": "/index.html"
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "/__/firebase/init.js",
+      "bytes": 537,
+      "sha256": "b227049dfe084b4f78ea113fed76f60752d15bd3eba2a00f2f3aa6eee17112c4",
+      "firebaseHash": "719b9dcb1f07919bfb0021bf0ef1a7bc88b028a33a43a098a9020c87bea5e482",
+      "etag": "719b9dcb1f07919bfb0021bf0ef1a7bc88b028a33a43a098a9020c87bea5e482",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/__/firebase/init.json",
+      "bytes": 360,
+      "sha256": "1e9367fa946d598797076d42b222c33f545de71feb87ff5cd856cc54e11457ea",
+      "firebaseHash": "cba48a0e49ebafb7452da46f85f5087173f1171c082ddf23b7acb8975832b592",
+      "etag": "cba48a0e49ebafb7452da46f85f5087173f1171c082ddf23b7acb8975832b592",
+      "etagMatchesFirebase": true,
+      "contentType": "application/json"
+    },
+    {
+      "path": "/assets/AINewsSection-QAZ1-CS5.js",
+      "bytes": 17532,
+      "sha256": "dd72bbe7a0a04ab39835ac7fdffe0df24591179a715563abf7a217d340dd7089",
+      "firebaseHash": "a7a8d8e49af358afb9e55b2aa410ef848d510d8258d6967e87f342095ad31ed5",
+      "etag": "a7a8d8e49af358afb9e55b2aa410ef848d510d8258d6967e87f342095ad31ed5",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/AboutPage-B-PcGgpg.js",
+      "bytes": 9402,
+      "sha256": "0c795f0e8ba2ccf67e47f1bcebad076235fcd2beee3552be94e7e8da66cf1718",
+      "firebaseHash": "007da2c4ea86d8e9d6015a1cea931b1c112b0a3254ffb58da7a23a8ab7ff55c7",
+      "etag": "007da2c4ea86d8e9d6015a1cea931b1c112b0a3254ffb58da7a23a8ab7ff55c7",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/AboutPage-OYBg1yjy.js",
+      "bytes": 9586,
+      "sha256": "0cd053e980f2642604db994445ce781846a4be20fb40bf6d28ca34c44eede764",
+      "firebaseHash": "9c008b5c6d5a56d23f76c17364919bc953ae44be685ef812bb4dbb987b3799f5",
+      "etag": "9c008b5c6d5a56d23f76c17364919bc953ae44be685ef812bb4dbb987b3799f5",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/AiToolsShowcase-DEd9jQpu.js",
+      "bytes": 2746,
+      "sha256": "184e1906f6f3846177ddb7abb10ec0c4420475791713540daf1e6ade7680e629",
+      "firebaseHash": "e4f572c2bbf56c1359bfa5fb3e656febc7c25ec36a7c0d709ff9d2ff2a040951",
+      "etag": "e4f572c2bbf56c1359bfa5fb3e656febc7c25ec36a7c0d709ff9d2ff2a040951",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/AnimatedText-D_ADrD3J.js",
+      "bytes": 2038,
+      "sha256": "5177e2a79e31f231c1d2de3fb88ca23357bf6c2058a3678bf9ab0095fcf7a210",
+      "firebaseHash": "32df986c206a3d91c2f512dca2ed87a5e06e9b57af593f5b0bb5e777aafcf0f5",
+      "etag": "32df986c206a3d91c2f512dca2ed87a5e06e9b57af593f5b0bb5e777aafcf0f5",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/BookResourcesPage-BacWoiM7.js",
+      "bytes": 15654,
+      "sha256": "a14617f25ab72aa96d518d8963c6b137a65c906c9f02b73050f155e651fbcb67",
+      "firebaseHash": "13e4f26c1648b2345562d29b7d7a0ec19d4e056bb3c79f0172bf2e135bea4624",
+      "etag": "13e4f26c1648b2345562d29b7d7a0ec19d4e056bb3c79f0172bf2e135bea4624",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/BookResourcesPage-L3XnyXEW.js",
+      "bytes": 16158,
+      "sha256": "d1a55f8b4d28cf9bd32841ae7c9eb5cc33bde5c016dcb1e58fd12f3036f6ae17",
+      "firebaseHash": "d22899de0d4dc5ee983849c5910801aa66d74a87a7eefe35db1ddcbbc809154a",
+      "etag": "d22899de0d4dc5ee983849c5910801aa66d74a87a7eefe35db1ddcbbc809154a",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/ContactPage-CDEKBtwW.js",
+      "bytes": 1166,
+      "sha256": "2a8724ba9009e368ed0d295574874967e20e7921f4c9f9233a3d914eac28e2a1",
+      "firebaseHash": "88a851b0452071bcac6d506c3e051ca0aaa064e774439a2cf90e25a27480fbd7",
+      "etag": "88a851b0452071bcac6d506c3e051ca0aaa064e774439a2cf90e25a27480fbd7",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/ContactPage-gmIi_1ZI.js",
+      "bytes": 1231,
+      "sha256": "efc278f6491a4ca33aea1f081b65335e1f000f6fd87f72b5b468c0c015970299",
+      "firebaseHash": "ca82bd05a7c547fb00ed07eab9261e4a753b7aa8d42252af43df4fe9a935ff1a",
+      "etag": "ca82bd05a7c547fb00ed07eab9261e4a753b7aa8d42252af43df4fe9a935ff1a",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/CookiesPage-BdsByede.js",
+      "bytes": 1547,
+      "sha256": "7538c4d425d46a8c8eb35a27cc179c34446d3916c9c8e5173a5655803d1b8fee",
+      "firebaseHash": "b06d91d18163ea1bae9846d33efb37636f604d088103665f6d5052ea7f47ad99",
+      "etag": "b06d91d18163ea1bae9846d33efb37636f604d088103665f6d5052ea7f47ad99",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/CookiesPage-nF9M70dZ.js",
+      "bytes": 1400,
+      "sha256": "dc98ae0633ff5b832be2531ebb06af5d831ec914d8fc06ccad18b9ba35d60adf",
+      "firebaseHash": "e6a16a7900f2ef6a787b555b223908688ff7d62f63f8827466dbe55c25533ae1",
+      "etag": "e6a16a7900f2ef6a787b555b223908688ff7d62f63f8827466dbe55c25533ae1",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/CoursesShowcase-DINEVisp.js",
+      "bytes": 48618,
+      "sha256": "f4489c21f802638a1aebea59dfcf3adf27d1fad0625efa92e8427da63f129f58",
+      "firebaseHash": "1bf1c4acf3b8d8eef44296f3d8771dcc84a29d10701af11a44d5f18457d90428",
+      "etag": "1bf1c4acf3b8d8eef44296f3d8771dcc84a29d10701af11a44d5f18457d90428",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/FloatingCardGrid-Bpqx5_fB.js",
+      "bytes": 42332,
+      "sha256": "cd5d01ede7a5865fd1b440e59afc656e86d5a82d0ef3e958a5dbf6a191e9f71b",
+      "firebaseHash": "a28ae270f24bfe95444e49d6356effae0cf743f3ed95ead15ae07c936aa2144f",
+      "etag": "a28ae270f24bfe95444e49d6356effae0cf743f3ed95ead15ae07c936aa2144f",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/HomePage-3CFLOMSW.js",
+      "bytes": 26232,
+      "sha256": "7a6a1f794bb01102b9e6545ff6cc5281b76e988c1c80b23ea033b1a74961988b",
+      "firebaseHash": "9a62803504d685612878d1f4c061b64cc5856d01e5a07f7ff627b68f5c2ba098",
+      "etag": "9a62803504d685612878d1f4c061b64cc5856d01e5a07f7ff627b68f5c2ba098",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/InfoPageLayout-CYzOdS_o.js",
+      "bytes": 2635,
+      "sha256": "fc5ee8d277817bda3a78af30b64d7f1ae7a203f00884dc69009347a3377172bb",
+      "firebaseHash": "7c0a132598a6fe0367c19d0f7d7403174ba78a0ab3f28b5709f21bd80affa831",
+      "etag": "7c0a132598a6fe0367c19d0f7d7403174ba78a0ab3f28b5709f21bd80affa831",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/LearnPage-B1yDO9Ri.js",
+      "bytes": 9067,
+      "sha256": "085ba276207546ef28501344a30a7706626571c6058daf0743c7cfd279f176cd",
+      "firebaseHash": "0b0d811da55d861353cadfa90fbed75bb94b51a8ef2d1f800395b5bbee502ac2",
+      "etag": "0b0d811da55d861353cadfa90fbed75bb94b51a8ef2d1f800395b5bbee502ac2",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/LearnPage-Bnc3_YpN.js",
+      "bytes": 19988,
+      "sha256": "d2c17384f497bd49bfecd79b70975b51fe7ca9a2330955409b519ac37e8218be",
+      "firebaseHash": "df955e3ef053892d9e41415b192846cd602a7cc947368b761722b8a093d9eaae",
+      "etag": "df955e3ef053892d9e41415b192846cd602a7cc947368b761722b8a093d9eaae",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/LibraryPage-B-VhsZN1.js",
+      "bytes": 1016,
+      "sha256": "10b4980fbe9133c7add1f03ab646a4c0d439b605a3f8118bc58bc90b01e1743d",
+      "firebaseHash": "dbf5d21104bee540bea00ecdedf8524f673ea3e10d344b40c3e48de417429209",
+      "etag": "dbf5d21104bee540bea00ecdedf8524f673ea3e10d344b40c3e48de417429209",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/LibraryPage-BlIVPU4s.js",
+      "bytes": 1029,
+      "sha256": "7bbf6949899bb208ca92d074de810b2ec240d9ba44586c9f1e8ef0f4cef83a6c",
+      "firebaseHash": "c90fdb09eb15fc8c47bd95441a6c5e4afc569bdaf7fd73297b8d81b24a4343ce",
+      "etag": "c90fdb09eb15fc8c47bd95441a6c5e4afc569bdaf7fd73297b8d81b24a4343ce",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/NewsPage-BgpSPMVk.js",
+      "bytes": 211,
+      "sha256": "eb2c758b7157fc2bd37402c3739ae7902c8e4909150c6d30fbf53ce58cfd23c8",
+      "firebaseHash": "9e5b24e30147d4e6198b6f063a138b066b00b5c1bc09557f4f3faa2ca3fad370",
+      "etag": "9e5b24e30147d4e6198b6f063a138b066b00b5c1bc09557f4f3faa2ca3fad370",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/NewsPage-CFeMAJr1.js",
+      "bytes": 211,
+      "sha256": "eb2c758b7157fc2bd37402c3739ae7902c8e4909150c6d30fbf53ce58cfd23c8",
+      "firebaseHash": "9e5b24e30147d4e6198b6f063a138b066b00b5c1bc09557f4f3faa2ca3fad370",
+      "etag": "9e5b24e30147d4e6198b6f063a138b066b00b5c1bc09557f4f3faa2ca3fad370",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/PlanningToolkitPage-XCcI23KD.js",
+      "bytes": 11826,
+      "sha256": "a25d55afc1ca3f45c03107503140e86b0e55e717161d1af9cd614eae746661c8",
+      "firebaseHash": "80ca0f169e1db4cc259e1f42e2b28abbb58fd0a83481a75fa9486a6362c5d182",
+      "etag": "80ca0f169e1db4cc259e1f42e2b28abbb58fd0a83481a75fa9486a6362c5d182",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/PlatformsPage-B-o9Ypob.js",
+      "bytes": 11061,
+      "sha256": "8c6f63eaf628e247dbfef5aa11ccb9d58ce3d997951e28874504cf3a56aa008c",
+      "firebaseHash": "3cc6b716055f50dc87a4f2e65ecf369469e66d0d3dc4584b28dc70d672643d07",
+      "etag": "3cc6b716055f50dc87a4f2e65ecf369469e66d0d3dc4584b28dc70d672643d07",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/PrivacyPage-BEzTJo4B.js",
+      "bytes": 1693,
+      "sha256": "b6abacc0d7000a57bdd8b118cf8b3428ecc6f720095bfb252cfedaa80c56e062",
+      "firebaseHash": "eab704d529b57c2a02a2009876e8ebb9cd9ef81b19038bb05fa9a8a2d4bbfb33",
+      "etag": "eab704d529b57c2a02a2009876e8ebb9cd9ef81b19038bb05fa9a8a2d4bbfb33",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/PrivacyPage-XvKvXipR.js",
+      "bytes": 1543,
+      "sha256": "62d1e34893184beda8ee31f2c40a9ab23b33a45921c7e1fcb6fc6a81c3add5aa",
+      "firebaseHash": "a7b7f4c219e7bf07654ca44ae39df987730dfbc43f4ad31881a161f7699ae6ec",
+      "etag": "a7b7f4c219e7bf07654ca44ae39df987730dfbc43f4ad31881a161f7699ae6ec",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/TermsPage-D8TD78IL.js",
+      "bytes": 1460,
+      "sha256": "22a0a12a91cb467e0e80b00fc36041267e0769cf8d20b9c04a24de283e573853",
+      "firebaseHash": "98e28a37081b888631b2c638748c0aca9c36d1fa080756d7bd5b40b1a716a86e",
+      "etag": "98e28a37081b888631b2c638748c0aca9c36d1fa080756d7bd5b40b1a716a86e",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/TermsPage-nFZvPMsL.js",
+      "bytes": 1585,
+      "sha256": "98e266c0407714f53107a9da648ac5bf15804b476175be3eca9713ff7ae5d779",
+      "firebaseHash": "12c09a31f5a75507a668b0fe9315e445efb866fd97a827158fca37d46f1a2b7c",
+      "etag": "12c09a31f5a75507a668b0fe9315e445efb866fd97a827158fca37d46f1a2b7c",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/ToolsPage-Dqx-xKoR.js",
+      "bytes": 27436,
+      "sha256": "e9cd2fb83bb6206014cdf332b88fc44fa4eafdb90d006d86247d9d4cefc5e889",
+      "firebaseHash": "49678e08e878107127c630b7b0ddeb0e31fc5cdde2bc5ed352746e3cc283db97",
+      "etag": "49678e08e878107127c630b7b0ddeb0e31fc5cdde2bc5ed352746e3cc283db97",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/ToolsPage-DwlwRXyF.js",
+      "bytes": 6520,
+      "sha256": "14685dab0959a13a304643dd8fe8eed25573aed5b80f7e1e6f8836b7b837b8e6",
+      "firebaseHash": "36245911b7877866496bbe84c627832cf52bc0187a04126d8155f63ed5168234",
+      "etag": "36245911b7877866496bbe84c627832cf52bc0187a04126d8155f63ed5168234",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/UNESCOAiLibrarySection-BbZXDUet.js",
+      "bytes": 38053,
+      "sha256": "5c4486c93fa49d6b70aa4e8f9202e8b6de10fb5447766e4220f94b0cff5f9ab7",
+      "firebaseHash": "f798c288d24020a3874d1d683484dccbe8ff238690ee4fac769e9429a5775ec8",
+      "etag": "f798c288d24020a3874d1d683484dccbe8ff238690ee4fac769e9429a5775ec8",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/VideosPage-BsjGJ_rT.js",
+      "bytes": 1011,
+      "sha256": "55a9843e90ffc8374218033982f3f3515e04cc7716eea85c4007c190ccbdd329",
+      "firebaseHash": "9d7fb028f7c34a7e6b70ec88a0b1d9268a298e57811c44a7265a04a91d721b0b",
+      "etag": "9d7fb028f7c34a7e6b70ec88a0b1d9268a298e57811c44a7265a04a91d721b0b",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/VideosPage-Ckmbszdx.js",
+      "bytes": 991,
+      "sha256": "1619a4933fa76a62d32a9ff6a6720e39a6c904a66430a69a776f00a05b60d8c2",
+      "firebaseHash": "78757fa2a89ff52242b5056005afcdef8ff7902f32146267477babb7556ef582",
+      "etag": "78757fa2a89ff52242b5056005afcdef8ff7902f32146267477babb7556ef582",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/aiToolsData-DvaHMCVY.js",
+      "bytes": 44597,
+      "sha256": "e37405af2e0e01938ea4b4f299952d5301d76e1bbc998ddb20f52a3ba5134806",
+      "firebaseHash": "ef510d1fd314ac69dc626398f5fa8abc64feed446576b574380670da5d7b02c0",
+      "etag": "ef510d1fd314ac69dc626398f5fa8abc64feed446576b574380670da5d7b02c0",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/aiToolsDataPTBR-CddDmta4.js",
+      "bytes": 46756,
+      "sha256": "abab7cd1c0d5f03f415101d2b8553adce38c052f07784a3ee5258ef55db2b4a6",
+      "firebaseHash": "fcb1736aabdc50dd214d8ee3f6ede2ddaf7073c10f60caee8fca45472472b876",
+      "etag": "fcb1736aabdc50dd214d8ee3f6ede2ddaf7073c10f60caee8fca45472472b876",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/coursesDataPTBR-D4mGp_O2.js",
+      "bytes": 9710,
+      "sha256": "4a762614a1b9bda74d4e7f42fd44cd2e019aa00dcb10077af4b712687c06e87e",
+      "firebaseHash": "c0605ad3b427a13d6825066871f8cba1d696fdea7cd74c8f345c3d17bdd8899f",
+      "etag": "c0605ad3b427a13d6825066871f8cba1d696fdea7cd74c8f345c3d17bdd8899f",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/index-C3giOu3g.js",
+      "bytes": 705129,
+      "sha256": "0c5aa334ddd952de3ef586f4c40ed60b983e7bc94bedcba409ab9036ba6d8b9c",
+      "firebaseHash": "e774c0cbbbe7fecbfa83bbb275696982e2e528aeb1bf755ba880df1aa4e65f99",
+      "etag": "e774c0cbbbe7fecbfa83bbb275696982e2e528aeb1bf755ba880df1aa4e65f99",
+      "etagMatchesFirebase": true,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/index-DP0yTBCz.css",
+      "bytes": 101414,
+      "sha256": "60af64ebca7cffa2a0add07a662826a6c4864b74f27b8693d47fad3d6d0c02fc",
+      "firebaseHash": "418cfc99467ac5ef8881acb3fe77a7d4cea7230a458703b2d30a06e237766dc7",
+      "etag": "418cfc99467ac5ef8881acb3fe77a7d4cea7230a458703b2d30a06e237766dc7",
+      "etagMatchesFirebase": true,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "path": "/capa-livro.png",
+      "bytes": 963341,
+      "sha256": "ae14b742f40ef8bedb40a25d9a3cd548542989fa05d0506e4a7bda56fb00d5cf",
+      "firebaseHash": "a415802a2f2198ab19afc758e9439574a2b5ccb21353be041ce2953d93345e3d",
+      "etag": "a415802a2f2198ab19afc758e9439574a2b5ccb21353be041ce2953d93345e3d",
+      "etagMatchesFirebase": true,
+      "contentType": "image/png"
+    },
+    {
+      "path": "/capafrente.png",
+      "bytes": 1833023,
+      "sha256": "9dda70a85f0bc53beaca9ca01a490df7ef41d8fdf40adbc8b94c868ca4a3f376",
+      "firebaseHash": "0c066f189d9500ef347cd1e5574c38c117df829b0ee2d0bebdbca368239ebcbf",
+      "etag": "0c066f189d9500ef347cd1e5574c38c117df829b0ee2d0bebdbca368239ebcbf",
+      "etagMatchesFirebase": true,
+      "contentType": "image/png"
+    },
+    {
+      "path": "/favicon.svg",
+      "bytes": 603,
+      "sha256": "6cf04d3805c72985fde832d73ae60c28c025e1166678f9127eaba8ac145b0018",
+      "firebaseHash": "e2036e9df355aa1827da4bd99c65617856aab41d43b775842365b50faded450a",
+      "etag": "e2036e9df355aa1827da4bd99c65617856aab41d43b775842365b50faded450a",
+      "etagMatchesFirebase": true,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "path": "/googleee99d6ddfcf55b0b.html",
+      "bytes": 53,
+      "sha256": "453308414eb1344458c7e9151393011bbc26fdb4236b35febfd2dc951e0378cc",
+      "firebaseHash": "ff2807127bdad58c9fe5082c480ae58d3ac85de3901c9173fe9ff5ea12af77c4",
+      "etag": "ff2807127bdad58c9fe5082c480ae58d3ac85de3901c9173fe9ff5ea12af77c4",
+      "etagMatchesFirebase": true,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/hero-final.jpg",
+      "bytes": 239408,
+      "sha256": "9a15cd7777fef2a96eda2774e588d9cb91ff516a4b7bc1908d87f2097707c113",
+      "firebaseHash": "8d9f0afbea4193428df366fb1e368854b11b947aad09fac045f3c161a9f2ac28",
+      "etag": "8d9f0afbea4193428df366fb1e368854b11b947aad09fac045f3c161a9f2ac28",
+      "etagMatchesFirebase": true,
+      "contentType": "image/jpeg"
+    },
+    {
+      "path": "/hero-poster.jpg",
+      "bytes": 230445,
+      "sha256": "cf644e76305c4018c95c6357499ad60045aff8d8fc99281514bac813b81bd9a3",
+      "firebaseHash": "420e8faf49e307625acbd09e0b78185c028d33be19ae7300f69fc12eee5a41eb",
+      "etag": "420e8faf49e307625acbd09e0b78185c028d33be19ae7300f69fc12eee5a41eb",
+      "etagMatchesFirebase": true,
+      "contentType": "image/jpeg"
+    },
+    {
+      "path": "/images/ai-teacher-pro-share.svg",
+      "bytes": 3841,
+      "sha256": "b14c8faa8c037904b85fb935749d09a6ddcb9dd418007fefbd791a09cde8f86d",
+      "firebaseHash": "1f0a8aac4fb514c59fce7d876ae44dfde3d6318b417a190a9a97b0c237ffba90",
+      "etag": "1f0a8aac4fb514c59fce7d876ae44dfde3d6318b417a190a9a97b0c237ffba90",
+      "etagMatchesFirebase": true,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "path": "/images/pix-lancamento-livro.png",
+      "bytes": 455,
+      "sha256": "47f5f493da555060999e8b67cb9b23e5f955f7b006b41b6a8fc094178c2fe653",
+      "firebaseHash": "68a360db20bad20be7246d29a7b989bdba5e555bd142237d49fa6be1f8031629",
+      "etag": "68a360db20bad20be7246d29a7b989bdba5e555bd142237d49fa6be1f8031629",
+      "etagMatchesFirebase": true,
+      "contentType": "image/png"
+    },
+    {
+      "path": "/images/pix-qrcode-ai-teacher.pro.png",
+      "bytes": 6841,
+      "sha256": "7ade9798090b4d8fce2fdeea2359348061753fbaac6b162708d91a9fe6317234",
+      "firebaseHash": "99699545bab6a3723cc6c5354bc42d99d3fa7963e6c453a6b291cfa0495313f9",
+      "etag": "99699545bab6a3723cc6c5354bc42d99d3fa7963e6c453a6b291cfa0495313f9",
+      "etagMatchesFirebase": true,
+      "contentType": "image/png"
+    },
+    {
+      "path": "/index.html",
+      "bytes": 5551,
+      "sha256": "d7a13fba5e3668ff65f0ac99a07c90684c4750597e90df418fedaef977a8a206",
+      "firebaseHash": "f5ec344c8ed24fe70ae042ec583e2ee9dcc9709f3c254d74d6300fafde489c29",
+      "etag": "f5ec344c8ed24fe70ae042ec583e2ee9dcc9709f3c254d74d6300fafde489c29",
+      "etagMatchesFirebase": true,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/robots.txt",
+      "bytes": 124,
+      "sha256": "a57a53c01e32c1a8a7a99d81a8ba495507d3d25ea9c75ba1b20180cff1e6c458",
+      "firebaseHash": "1160e16155957f868fa39964bd747ee86c3bc8dd94412c1f44e89f1203fed9d5",
+      "etag": "1160e16155957f868fa39964bd747ee86c3bc8dd94412c1f44e89f1203fed9d5",
+      "etagMatchesFirebase": true,
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "path": "/sitemap.xml",
+      "bytes": 3916,
+      "sha256": "366697d02b5ac09a9ff3646573e68c009124b217220a5055caa397cb2c542c29",
+      "firebaseHash": "9e311e266642402e04ee0f4cf3cb7b66606693e7d54b03e23da344fe692dd7e0",
+      "etag": "9e311e266642402e04ee0f4cf3cb7b66606693e7d54b03e23da344fe692dd7e0",
+      "etagMatchesFirebase": true,
+      "contentType": "application/xml"
+    },
+    {
+      "path": "/videowebsite.mp4",
+      "bytes": 11504006,
+      "sha256": "b0d903ff8b6f9a120b8cb7f78bf7cc0827486e38aa28fa3ba40becfe86410451",
+      "firebaseHash": "dca3e8a200bb3a5aadd73cec1c579f65b4a684eed9b8f3d1e8f3a8ac8d20eefb",
+      "etag": "dca3e8a200bb3a5aadd73cec1c579f65b4a684eed9b8f3d1e8f3a8ac8d20eefb",
+      "etagMatchesFirebase": true,
+      "contentType": "video/mp4"
+    }
+  ]
+}
