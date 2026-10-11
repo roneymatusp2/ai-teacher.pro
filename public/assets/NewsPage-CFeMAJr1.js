@@ -1,0 +1,1 @@
+import{j as s}from"./index-C3giOu3g.js";import{A as t}from"./AINewsSection-QAZ1-CS5.js";import"./AnimatedText-D_ADrD3J.js";const a=()=>s.jsx("div",{className:"pt-10",children:s.jsx(t,{})});export{a as default};

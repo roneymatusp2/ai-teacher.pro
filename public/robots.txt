@@ -1,0 +1,6 @@
+# AI Teacher Pro — https://ai-teachers.pro
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ai-teachers.pro/sitemap.xml

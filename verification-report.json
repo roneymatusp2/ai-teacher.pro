@@ -1,0 +1,1291 @@
+{
+  "verifiedAt": "2026-10-11T14:46:13.250104+00:00",
+  "online": "https://ai-teachers.pro/",
+  "local": "http://127.0.0.1:5173/",
+  "liveVersion": "sites/aiteacherpro-386e1/versions/a622296626d620dc",
+  "files": [
+    {
+      "path": "/assets/AINewsSection-QAZ1-CS5.js",
+      "bytes": 17532,
+      "sameBytes": true,
+      "sha256": "dd72bbe7a0a04ab39835ac7fdffe0df24591179a715563abf7a217d340dd7089",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/AboutPage-B-PcGgpg.js",
+      "bytes": 9402,
+      "sameBytes": true,
+      "sha256": "0c795f0e8ba2ccf67e47f1bcebad076235fcd2beee3552be94e7e8da66cf1718",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/AboutPage-OYBg1yjy.js",
+      "bytes": 9586,
+      "sameBytes": true,
+      "sha256": "0cd053e980f2642604db994445ce781846a4be20fb40bf6d28ca34c44eede764",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/AiToolsShowcase-DEd9jQpu.js",
+      "bytes": 2746,
+      "sameBytes": true,
+      "sha256": "184e1906f6f3846177ddb7abb10ec0c4420475791713540daf1e6ade7680e629",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/AnimatedText-D_ADrD3J.js",
+      "bytes": 2038,
+      "sameBytes": true,
+      "sha256": "5177e2a79e31f231c1d2de3fb88ca23357bf6c2058a3678bf9ab0095fcf7a210",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/BookResourcesPage-BacWoiM7.js",
+      "bytes": 15654,
+      "sameBytes": true,
+      "sha256": "a14617f25ab72aa96d518d8963c6b137a65c906c9f02b73050f155e651fbcb67",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/BookResourcesPage-L3XnyXEW.js",
+      "bytes": 16158,
+      "sameBytes": true,
+      "sha256": "d1a55f8b4d28cf9bd32841ae7c9eb5cc33bde5c016dcb1e58fd12f3036f6ae17",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/ContactPage-CDEKBtwW.js",
+      "bytes": 1166,
+      "sameBytes": true,
+      "sha256": "2a8724ba9009e368ed0d295574874967e20e7921f4c9f9233a3d914eac28e2a1",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/ContactPage-gmIi_1ZI.js",
+      "bytes": 1231,
+      "sameBytes": true,
+      "sha256": "efc278f6491a4ca33aea1f081b65335e1f000f6fd87f72b5b468c0c015970299",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/CookiesPage-BdsByede.js",
+      "bytes": 1547,
+      "sameBytes": true,
+      "sha256": "7538c4d425d46a8c8eb35a27cc179c34446d3916c9c8e5173a5655803d1b8fee",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/CookiesPage-nF9M70dZ.js",
+      "bytes": 1400,
+      "sameBytes": true,
+      "sha256": "dc98ae0633ff5b832be2531ebb06af5d831ec914d8fc06ccad18b9ba35d60adf",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/CoursesShowcase-DINEVisp.js",
+      "bytes": 48618,
+      "sameBytes": true,
+      "sha256": "f4489c21f802638a1aebea59dfcf3adf27d1fad0625efa92e8427da63f129f58",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/FloatingCardGrid-Bpqx5_fB.js",
+      "bytes": 42332,
+      "sameBytes": true,
+      "sha256": "cd5d01ede7a5865fd1b440e59afc656e86d5a82d0ef3e958a5dbf6a191e9f71b",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/HomePage-3CFLOMSW.js",
+      "bytes": 26232,
+      "sameBytes": true,
+      "sha256": "7a6a1f794bb01102b9e6545ff6cc5281b76e988c1c80b23ea033b1a74961988b",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/InfoPageLayout-CYzOdS_o.js",
+      "bytes": 2635,
+      "sameBytes": true,
+      "sha256": "fc5ee8d277817bda3a78af30b64d7f1ae7a203f00884dc69009347a3377172bb",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/LearnPage-B1yDO9Ri.js",
+      "bytes": 9067,
+      "sameBytes": true,
+      "sha256": "085ba276207546ef28501344a30a7706626571c6058daf0743c7cfd279f176cd",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/LearnPage-Bnc3_YpN.js",
+      "bytes": 19988,
+      "sameBytes": true,
+      "sha256": "d2c17384f497bd49bfecd79b70975b51fe7ca9a2330955409b519ac37e8218be",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/LibraryPage-B-VhsZN1.js",
+      "bytes": 1016,
+      "sameBytes": true,
+      "sha256": "10b4980fbe9133c7add1f03ab646a4c0d439b605a3f8118bc58bc90b01e1743d",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/LibraryPage-BlIVPU4s.js",
+      "bytes": 1029,
+      "sameBytes": true,
+      "sha256": "7bbf6949899bb208ca92d074de810b2ec240d9ba44586c9f1e8ef0f4cef83a6c",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/NewsPage-BgpSPMVk.js",
+      "bytes": 211,
+      "sameBytes": true,
+      "sha256": "eb2c758b7157fc2bd37402c3739ae7902c8e4909150c6d30fbf53ce58cfd23c8",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/NewsPage-CFeMAJr1.js",
+      "bytes": 211,
+      "sameBytes": true,
+      "sha256": "eb2c758b7157fc2bd37402c3739ae7902c8e4909150c6d30fbf53ce58cfd23c8",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/PlanningToolkitPage-XCcI23KD.js",
+      "bytes": 11826,
+      "sameBytes": true,
+      "sha256": "a25d55afc1ca3f45c03107503140e86b0e55e717161d1af9cd614eae746661c8",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/PlatformsPage-B-o9Ypob.js",
+      "bytes": 11061,
+      "sameBytes": true,
+      "sha256": "8c6f63eaf628e247dbfef5aa11ccb9d58ce3d997951e28874504cf3a56aa008c",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/PrivacyPage-BEzTJo4B.js",
+      "bytes": 1693,
+      "sameBytes": true,
+      "sha256": "b6abacc0d7000a57bdd8b118cf8b3428ecc6f720095bfb252cfedaa80c56e062",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/PrivacyPage-XvKvXipR.js",
+      "bytes": 1543,
+      "sameBytes": true,
+      "sha256": "62d1e34893184beda8ee31f2c40a9ab23b33a45921c7e1fcb6fc6a81c3add5aa",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/TermsPage-D8TD78IL.js",
+      "bytes": 1460,
+      "sameBytes": true,
+      "sha256": "22a0a12a91cb467e0e80b00fc36041267e0769cf8d20b9c04a24de283e573853",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/TermsPage-nFZvPMsL.js",
+      "bytes": 1585,
+      "sameBytes": true,
+      "sha256": "98e266c0407714f53107a9da648ac5bf15804b476175be3eca9713ff7ae5d779",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/ToolsPage-Dqx-xKoR.js",
+      "bytes": 27436,
+      "sameBytes": true,
+      "sha256": "e9cd2fb83bb6206014cdf332b88fc44fa4eafdb90d006d86247d9d4cefc5e889",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/ToolsPage-DwlwRXyF.js",
+      "bytes": 6520,
+      "sameBytes": true,
+      "sha256": "14685dab0959a13a304643dd8fe8eed25573aed5b80f7e1e6f8836b7b837b8e6",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/UNESCOAiLibrarySection-BbZXDUet.js",
+      "bytes": 38053,
+      "sameBytes": true,
+      "sha256": "5c4486c93fa49d6b70aa4e8f9202e8b6de10fb5447766e4220f94b0cff5f9ab7",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/VideosPage-BsjGJ_rT.js",
+      "bytes": 1011,
+      "sameBytes": true,
+      "sha256": "55a9843e90ffc8374218033982f3f3515e04cc7716eea85c4007c190ccbdd329",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/VideosPage-Ckmbszdx.js",
+      "bytes": 991,
+      "sameBytes": true,
+      "sha256": "1619a4933fa76a62d32a9ff6a6720e39a6c904a66430a69a776f00a05b60d8c2",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/aiToolsData-DvaHMCVY.js",
+      "bytes": 44597,
+      "sameBytes": true,
+      "sha256": "e37405af2e0e01938ea4b4f299952d5301d76e1bbc998ddb20f52a3ba5134806",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/aiToolsDataPTBR-CddDmta4.js",
+      "bytes": 46756,
+      "sameBytes": true,
+      "sha256": "abab7cd1c0d5f03f415101d2b8553adce38c052f07784a3ee5258ef55db2b4a6",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/coursesDataPTBR-D4mGp_O2.js",
+      "bytes": 9710,
+      "sameBytes": true,
+      "sha256": "4a762614a1b9bda74d4e7f42fd44cd2e019aa00dcb10077af4b712687c06e87e",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/index-C3giOu3g.js",
+      "bytes": 705129,
+      "sameBytes": true,
+      "sha256": "0c5aa334ddd952de3ef586f4c40ed60b983e7bc94bedcba409ab9036ba6d8b9c",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/assets/index-DP0yTBCz.css",
+      "bytes": 101414,
+      "sameBytes": true,
+      "sha256": "60af64ebca7cffa2a0add07a662826a6c4864b74f27b8693d47fad3d6d0c02fc",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/capa-livro.png",
+      "bytes": 963341,
+      "sameBytes": true,
+      "sha256": "ae14b742f40ef8bedb40a25d9a3cd548542989fa05d0506e4a7bda56fb00d5cf",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/capafrente.png",
+      "bytes": 1833023,
+      "sameBytes": true,
+      "sha256": "9dda70a85f0bc53beaca9ca01a490df7ef41d8fdf40adbc8b94c868ca4a3f376",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/favicon.svg",
+      "bytes": 603,
+      "sameBytes": true,
+      "sha256": "6cf04d3805c72985fde832d73ae60c28c025e1166678f9127eaba8ac145b0018",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/googleee99d6ddfcf55b0b.html",
+      "bytes": 53,
+      "sameBytes": true,
+      "sha256": "453308414eb1344458c7e9151393011bbc26fdb4236b35febfd2dc951e0378cc",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/hero-final.jpg",
+      "bytes": 239408,
+      "sameBytes": true,
+      "sha256": "9a15cd7777fef2a96eda2774e588d9cb91ff516a4b7bc1908d87f2097707c113",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/hero-poster.jpg",
+      "bytes": 230445,
+      "sameBytes": true,
+      "sha256": "cf644e76305c4018c95c6357499ad60045aff8d8fc99281514bac813b81bd9a3",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/images/ai-teacher-pro-share.svg",
+      "bytes": 3841,
+      "sameBytes": true,
+      "sha256": "b14c8faa8c037904b85fb935749d09a6ddcb9dd418007fefbd791a09cde8f86d",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/images/pix-lancamento-livro.png",
+      "bytes": 455,
+      "sameBytes": true,
+      "sha256": "47f5f493da555060999e8b67cb9b23e5f955f7b006b41b6a8fc094178c2fe653",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/images/pix-qrcode-ai-teacher.pro.png",
+      "bytes": 6841,
+      "sameBytes": true,
+      "sha256": "7ade9798090b4d8fce2fdeea2359348061753fbaac6b162708d91a9fe6317234",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/index.html",
+      "bytes": 5551,
+      "sameBytes": true,
+      "sha256": "d7a13fba5e3668ff65f0ac99a07c90684c4750597e90df418fedaef977a8a206",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/robots.txt",
+      "bytes": 124,
+      "sameBytes": true,
+      "sha256": "a57a53c01e32c1a8a7a99d81a8ba495507d3d25ea9c75ba1b20180cff1e6c458",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "bytes": 3916,
+      "sameBytes": true,
+      "sha256": "366697d02b5ac09a9ff3646573e68c009124b217220a5055caa397cb2c542c29",
+      "matchesFirebase": true
+    },
+    {
+      "path": "/videowebsite.mp4",
+      "bytes": 11504006,
+      "sameBytes": true,
+      "sha256": "b0d903ff8b6f9a120b8cb7f78bf7cc0827486e38aa28fa3ba40becfe86410451",
+      "matchesFirebase": true
+    }
+  ],
+  "httpRoutes": [
+    {
+      "path": "/",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/about",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/assets/missing-parity-check.js",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/book-resources",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/cancel.html",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter3_ex1",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter3_ex2",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter3_ex3",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter3_ex4",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter3_ex5",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter3_ex6",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter3_ex7",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter5_ex1",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter6-base44",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter6-bolt",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter6-create",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter6-ess-prompt",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter6-lovable",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter6-manus",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter6-replit",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/chapter6-resources",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/contact",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/cookies",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/education-discounts",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/en",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/en-hub",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/ethics-resources",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/future-ready",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/hub",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/learn",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/library",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/news",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/planning-toolkit",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/platforms",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/privacy",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/about",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/book-resources",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter3-ex1",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter3-ex2",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter3-ex3",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter3-ex4",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter3-ex5",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter3-ex6",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter3-ex7",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter5-ex1",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter6-base44",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter6-bolt",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter6-create",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter6-ess-prompt",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter6-lovable",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter6-manus",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter6-replit",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/chapter6-resources",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/contact",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/cookies",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/education-discounts",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/ethics-resources",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/future-ready",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/hub",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/learn",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/library",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/news",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/planning-toolkit",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/platforms",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/privacy",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/terms",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/tools",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/tools/",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/pt-br/videos",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/terms",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/tools",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    },
+    {
+      "path": "/videos",
+      "sameStatus": true,
+      "sameContentType": true,
+      "sameBytes": true
+    }
+  ],
+  "visualMethod": "Same Chromium browser, viewport, fonts, locale and theme; clock and random seed controlled, motion reduced and videos paused for deterministic screenshots.",
+  "visualComparisons": [
+    {
+      "view": "desktop-pt",
+      "route": "/",
+      "pixels": 1440000,
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "sameGeometry": true,
+      "onlineErrors": [],
+      "localErrors": [],
+      "captures": {
+        "online": {
+          "file": "verification/desktop-pt-online.png",
+          "geometry": [
+            {
+              "tag": "HEADER",
+              "text": "ai-teachers.proby Roney Lima do NascimentoO LivroFerramentas IACursosNotíciasSobrePTENJunte-se a 15.000+ educadoresAdquirir o LivroPTEN",
+              "x": 0,
+              "y": 0,
+              "w": 1440,
+              "h": 81,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "H1",
+              "text": "Seu companheiro essencial para ensinar com IA generativa.",
+              "x": 112,
+              "y": 606.9,
+              "w": 672,
+              "h": 155.5,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "48px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Conheça o livro",
+              "x": 112,
+              "y": 868,
+              "w": 178,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(10, 15, 31)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Ver as ferramentas",
+              "x": 302,
+              "y": 868,
+              "w": 207,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            }
+          ],
+          "errors": []
+        },
+        "local": {
+          "file": "verification/desktop-pt-local.png",
+          "geometry": [
+            {
+              "tag": "HEADER",
+              "text": "ai-teachers.proby Roney Lima do NascimentoO LivroFerramentas IACursosNotíciasSobrePTENJunte-se a 15.000+ educadoresAdquirir o LivroPTEN",
+              "x": 0,
+              "y": 0,
+              "w": 1440,
+              "h": 81,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "H1",
+              "text": "Seu companheiro essencial para ensinar com IA generativa.",
+              "x": 112,
+              "y": 606.9,
+              "w": 672,
+              "h": 155.5,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "48px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Conheça o livro",
+              "x": 112,
+              "y": 868,
+              "w": 178,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(10, 15, 31)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Ver as ferramentas",
+              "x": 302,
+              "y": 868,
+              "w": 207,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            }
+          ],
+          "errors": []
+        }
+      }
+    },
+    {
+      "view": "mobile-pt",
+      "route": "/",
+      "pixels": 329160,
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "sameGeometry": true,
+      "onlineErrors": [],
+      "localErrors": [],
+      "captures": {
+        "online": {
+          "file": "verification/mobile-pt-online.png",
+          "geometry": [
+            {
+              "tag": "HEADER",
+              "text": "ai-teachers.proby Roney Lima do NascimentoO LivroFerramentas IACursosNotíciasSobrePTENJunte-se a 15.000+ educadoresAdquirir o LivroPTEN",
+              "x": 0,
+              "y": 0,
+              "w": 390,
+              "h": 65,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "H1",
+              "text": "Seu companheiro essencial para ensinar com IA generativa.",
+              "x": 20,
+              "y": 410,
+              "w": 350,
+              "h": 103.6,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "32px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Conheça o livro",
+              "x": 20,
+              "y": 648,
+              "w": 178,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(10, 15, 31)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Ver as ferramentas",
+              "x": 20,
+              "y": 712,
+              "w": 207,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            }
+          ],
+          "errors": []
+        },
+        "local": {
+          "file": "verification/mobile-pt-local.png",
+          "geometry": [
+            {
+              "tag": "HEADER",
+              "text": "ai-teachers.proby Roney Lima do NascimentoO LivroFerramentas IACursosNotíciasSobrePTENJunte-se a 15.000+ educadoresAdquirir o LivroPTEN",
+              "x": 0,
+              "y": 0,
+              "w": 390,
+              "h": 65,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "H1",
+              "text": "Seu companheiro essencial para ensinar com IA generativa.",
+              "x": 20,
+              "y": 410,
+              "w": 350,
+              "h": 103.6,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "32px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Conheça o livro",
+              "x": 20,
+              "y": 648,
+              "w": 178,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(10, 15, 31)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Ver as ferramentas",
+              "x": 20,
+              "y": 712,
+              "w": 207,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            }
+          ],
+          "errors": []
+        }
+      }
+    },
+    {
+      "view": "desktop-en",
+      "route": "/en",
+      "pixels": 1440000,
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "sameGeometry": true,
+      "onlineErrors": [],
+      "localErrors": [],
+      "captures": {
+        "online": {
+          "file": "verification/desktop-en-online.png",
+          "geometry": [
+            {
+              "tag": "HEADER",
+              "text": "ai-teachers.proby Roney Lima do NascimentoThe BookAI ToolsCoursesNewsAboutPTENJoin 15,000+ EducatorsGet the BookPTEN",
+              "x": 0,
+              "y": 0,
+              "w": 1440,
+              "h": 81,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "H1",
+              "text": "Your Essential Companion for Teaching with Generative AI.",
+              "x": 112,
+              "y": 658.8,
+              "w": 672,
+              "h": 103.7,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "48px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Explore the Book",
+              "x": 112,
+              "y": 868,
+              "w": 193,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(10, 15, 31)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Browse the Tools",
+              "x": 317,
+              "y": 868,
+              "w": 195,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            }
+          ],
+          "errors": []
+        },
+        "local": {
+          "file": "verification/desktop-en-local.png",
+          "geometry": [
+            {
+              "tag": "HEADER",
+              "text": "ai-teachers.proby Roney Lima do NascimentoThe BookAI ToolsCoursesNewsAboutPTENJoin 15,000+ EducatorsGet the BookPTEN",
+              "x": 0,
+              "y": 0,
+              "w": 1440,
+              "h": 81,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "H1",
+              "text": "Your Essential Companion for Teaching with Generative AI.",
+              "x": 112,
+              "y": 658.8,
+              "w": 672,
+              "h": 103.7,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "48px",
+              "color": "rgb(248, 250, 252)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Explore the Book",
+              "x": 112,
+              "y": 868,
+              "w": 193,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(10, 15, 31)"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Browse the Tools",
+              "x": 317,
+              "y": 868,
+              "w": 195,
+              "h": 52,
+              "font": "Geist, Inter, system-ui, -apple-system, sans-serif",
+              "size": "16px",
+              "color": "rgb(248, 250, 252)"
+            }
+          ],
+          "errors": []
+        }
+      }
+    }
+  ],
+  "browserRouteChecks": [
+    {
+      "path": "/",
+      "status": 200,
+      "headings": [
+        "Seu companheiro essencial para ensinar com IA generativa.",
+        "As ferramentas de IA que recomendamos para professores."
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/en",
+      "status": 200,
+      "headings": [
+        "Your Essential Companion for Teaching with Generative AI.",
+        "The AI tools we recommend for teachers."
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/tools",
+      "status": 200,
+      "headings": [
+        "IAs chinesas gratuitas para testar agora",
+        "Mais IAs gratuitas para começar hoje"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/tools",
+      "status": 200,
+      "headings": [
+        "AI Tools for Teachers",
+        "Classroom tools"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/learn",
+      "status": 200,
+      "headings": [
+        "Aprenda IA com links oficiais, gratuitos e mais confiaveis.",
+        "O que melhorou aqui"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/library",
+      "status": 200,
+      "headings": [
+        "Biblioteca de Educação IA"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/videos",
+      "status": 200,
+      "headings": [
+        "Vídeos de Educação IA"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/about",
+      "status": 200,
+      "headings": [
+        "Sobre o AI Teacher Pro",
+        "Nossa Missão"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/contact",
+      "status": 200,
+      "headings": [
+        "Fale com o AI Teacher Pro",
+        "Sobre o que escrever"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/privacy",
+      "status": 200,
+      "headings": [
+        "Privacidade no AI Teacher Pro",
+        "Informações básicas de uso"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/terms",
+      "status": 200,
+      "headings": [
+        "Termos de uso",
+        "Finalidade educacional"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/cookies",
+      "status": 200,
+      "headings": [
+        "Aviso sobre cookies e armazenamento local",
+        "O que pode ser armazenado"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/book-resources",
+      "status": 200,
+      "headings": [
+        "📚 Recursos Exclusivos do Livro",
+        "📖 Sobre Estes Recursos"
+      ],
+      "errors": [],
+      "localFailures": []
+    },
+    {
+      "path": "/pt-br/news",
+      "status": 200,
+      "headings": [
+        "Teachers Move Beyond AI Basics to More Sophisticated Instructional Uses - Education Week",
+        "xAI Faces Lawsuit for Unpermitted Gas Turbines: Implications for Education"
+      ],
+      "errors": [],
+      "localFailures": []
+    }
+  ],
+  "originalBackup": "/home/roney/projects/Ai-teacher.pro.backup-20261011-112134",
+  "sourceLimitation": "The deployed React/TypeScript source and source maps were not available; public contains the exact deployed compiled files.",
+  "githubBeforeSynchronization": {
+    "url": "https://github.com/roneymatusp2/ai-teacher.pro",
+    "head": "2be3073773cb8a31afe803163e04b8c44f7baf4d",
+    "commitDate": "2026-02-07",
+    "matchesLiveSource": false,
+    "note": "Repository state checked before synchronizing main with the recovered publication."
+  },
+  "excludedHostingPaths": [
+    "/__/firebase/init.js",
+    "/__/firebase/init.json"
+  ],
+  "exclusionReason": "Firebase Hosting reserved initialization endpoints are provider-managed and unused by this application; they are intentionally not copied into the repository or build."
+}
